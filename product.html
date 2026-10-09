@@ -1,0 +1,2024 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <style>
+/* =========================================
+   GREENNEST PRODUCT PAGE - CSS
+========================================= */
+
+#gnProductPage,
+#gnProductPage * {
+    box-sizing: border-box;
+}
+
+#gnProductPage {
+    --gn-green: #245b3d;
+    --gn-dark: #173d2a;
+    --gn-light: #edf5e9;
+    --gn-cream: #fbfaf5;
+    --gn-text: #26352a;
+    --gn-muted: #718073;
+
+    min-height: 100vh;
+    background: var(--gn-cream);
+    color: var(--gn-text);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#gnProductPage a {
+    color: inherit;
+    text-decoration: none;
+}
+
+#gnProductPage button,
+#gnProductPage input,
+#gnProductPage select {
+    font: inherit;
+}
+
+#gnProductPage button {
+    cursor: pointer;
+}
+
+#gnProductPage .gn-container {
+    width: min(1200px, 92%);
+    margin: auto;
+}
+
+/* NAVBAR */
+
+#gnProductPage .gn-navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #fff;
+    box-shadow: 0 3px 16px rgba(24, 60, 35, .09);
+}
+
+#gnProductPage .gn-nav-inner {
+    min-height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+#gnProductPage .gn-logo {
+    color: var(--gn-green);
+    font-size: 25px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+#gnProductPage .gn-logo span {
+    color: #81a96b;
+}
+
+#gnProductPage .gn-nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+}
+
+#gnProductPage .gn-nav-links a {
+    position: relative;
+    padding: 10px 0;
+    color: #35483a;
+    font-size: 14px;
+    font-weight: 600;
+    transition: color .25s ease;
+}
+
+#gnProductPage .gn-nav-links a:hover,
+#gnProductPage .gn-nav-links a.gn-active {
+    color: var(--gn-green);
+}
+
+#gnProductPage .gn-nav-links a.gn-active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 2px;
+    height: 2px;
+    border-radius: 4px;
+    background: #79a86a;
+}
+
+#gnProductPage .gn-nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#gnProductPage .gn-icon-btn {
+    position: relative;
+    width: 42px;
+    height: 42px;
+    border: 1px solid #e4ebdf;
+    border-radius: 50%;
+    background: #f8fbf5;
+    color: var(--gn-green);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    transition: .25s ease;
+}
+
+#gnProductPage .gn-icon-btn:hover {
+    background: var(--gn-green);
+    color: white;
+    transform: translateY(-2px);
+}
+
+#gnProductPage .gn-count {
+    position: absolute;
+    top: -5px;
+    right: -4px;
+    min-width: 19px;
+    height: 19px;
+    padding: 0 4px;
+    border: 2px solid white;
+    border-radius: 20px;
+    background: #e36d53;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#gnProductPage .gn-menu-toggle {
+    display: none;
+}
+
+/* PROFILE DROPDOWN */
+
+#gnProductPage .gn-profile-wrap {
+    position: relative;
+}
+
+#gnProductPage .gn-profile-panel {
+    display: none;
+    position: absolute;
+    top: 53px;
+    right: 0;
+    width: 270px;
+    padding: 20px;
+    background: white;
+    border: 1px solid #e4ebdf;
+    border-radius: 16px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, .13);
+    z-index: 1100;
+}
+
+#gnProductPage .gn-profile-panel.gn-open {
+    display: block;
+    animation: gnDrop .2s ease;
+}
+
+#gnProductPage .gn-profile-panel h3 {
+    margin: 0 0 8px;
+    color: var(--gn-green);
+    font-size: 18px;
+}
+
+#gnProductPage .gn-profile-panel p {
+    margin: 6px 0;
+    overflow-wrap: anywhere;
+    color: var(--gn-muted);
+    font-size: 12px;
+}
+
+#gnProductPage .gn-profile-links {
+    display: grid;
+    gap: 7px;
+    margin-top: 16px;
+}
+
+#gnProductPage .gn-profile-links a,
+#gnProductPage .gn-profile-links button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    text-align: left;
+    border: none;
+    border-radius: 8px;
+    background: #f3f7ef;
+    color: var(--gn-dark);
+    font-size: 13px;
+}
+
+#gnProductPage .gn-profile-links a:hover,
+#gnProductPage .gn-profile-links button:hover {
+    background: #e3efdc;
+}
+
+#gnProductPage .gn-profile-links .gn-logout {
+    color: #b33f36;
+    background: #fff0ed;
+}
+
+/* HERO SECTION */
+
+#gnProductPage .gn-hero {
+    position: relative;
+    overflow: hidden;
+    padding: 58px 0;
+    background:
+        radial-gradient(
+            circle at 88% 15%,
+            rgba(206, 226, 183, .65),
+            transparent 30%
+        ),
+        linear-gradient(120deg, #edf5e7, #f9f7ed);
+}
+
+#gnProductPage .gn-hero-content {
+    display: grid;
+    grid-template-columns: 1.2fr .8fr;
+    align-items: center;
+    gap: 35px;
+}
+
+#gnProductPage .gn-eyebrow {
+    display: inline-block;
+    margin-bottom: 15px;
+    padding: 8px 14px;
+    border-radius: 30px;
+    background: white;
+    color: var(--gn-green);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+#gnProductPage .gn-hero h1 {
+    margin: 0 0 18px;
+    color: var(--gn-dark);
+    font-size: clamp(34px, 5vw, 53px);
+    line-height: 1.13;
+}
+
+#gnProductPage .gn-hero h1 span {
+    color: #6e9d59;
+}
+
+#gnProductPage .gn-hero p {
+    max-width: 540px;
+    margin: 0;
+    color: #5f705f;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+#gnProductPage .gn-hero-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 210px;
+}
+
+#gnProductPage .gn-hero-visual span {
+    font-size: clamp(100px, 15vw, 175px);
+    filter: drop-shadow(0 15px 12px rgba(38, 73, 39, .15));
+    animation: gnFloat 3.5s ease-in-out infinite;
+}
+
+/* SEARCH BAR */
+
+#gnProductPage .gn-tools {
+    padding: 30px 0 12px;
+}
+
+#gnProductPage .gn-tools-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+#gnProductPage .gn-search {
+    flex: 1;
+    max-width: 650px;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 17px;
+    border: 1px solid #dfe8d9;
+    border-radius: 12px;
+    background: white;
+    box-shadow: 0 3px 12px rgba(38, 73, 39, .04);
+}
+
+#gnProductPage .gn-search span {
+    color: #64825c;
+    font-size: 21px;
+}
+
+#gnProductPage .gn-search input {
+    width: 100%;
+    min-width: 0;
+    height: 49px;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--gn-text);
+    font-size: 14px;
+}
+
+#gnProductPage .gn-filter-toggle {
+    min-height: 49px;
+    padding: 0 18px;
+    border: 1px solid #dfe8d9;
+    border-radius: 12px;
+    background: white;
+    color: var(--gn-green);
+    font-weight: 700;
+    transition: .2s ease;
+}
+
+#gnProductPage .gn-filter-toggle:hover,
+#gnProductPage .gn-filter-toggle.gn-selected {
+    background: var(--gn-green);
+    color: white;
+}
+
+/* FILTER DROPDOWN */
+
+#gnProductPage .gn-filter-panel {
+    display: none;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) auto;
+    align-items: end;
+    gap: 16px;
+    margin-top: 15px;
+    padding: 22px;
+    border: 1px solid #e2eadc;
+    border-radius: 14px;
+    background: white;
+    box-shadow: 0 8px 22px rgba(38, 73, 39, .06);
+}
+
+#gnProductPage .gn-filter-panel.gn-show {
+    display: grid;
+    animation: gnDrop .22s ease;
+}
+
+#gnProductPage .gn-filter-group label {
+    display: block;
+    margin-bottom: 9px;
+    color: #526552;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+#gnProductPage .gn-filter-group select {
+    width: 100%;
+    min-height: 43px;
+    padding: 0 10px;
+    border: 1px solid #dfe8d9;
+    border-radius: 8px;
+    outline-color: #8bad7c;
+    background: #fbfcf8;
+    color: #344a37;
+    font-size: 13px;
+}
+
+#gnProductPage .gn-reset-btn {
+    min-height: 43px;
+    padding: 0 15px;
+    border: none;
+    border-radius: 8px;
+    background: #f1f4ed;
+    color: var(--gn-green);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+#gnProductPage .gn-reset-btn:hover {
+    background: #e3eddc;
+}
+
+/* PRODUCT SECTION */
+
+#gnProductPage .gn-products-section {
+    padding: 28px 0 75px;
+}
+
+#gnProductPage .gn-section-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 23px;
+}
+
+#gnProductPage .gn-section-heading h2 {
+    margin: 0 0 8px;
+    color: var(--gn-dark);
+    font-size: clamp(24px, 3vw, 31px);
+}
+
+#gnProductPage .gn-section-heading p {
+    margin: 0;
+    color: var(--gn-muted);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+#gnProductPage .gn-results {
+    color: var(--gn-muted);
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+#gnProductPage .gn-product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+}
+
+/* PRODUCT CARD */
+
+#gnProductPage .gn-product-card {
+    min-width: 0;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid #e7ebdf;
+    border-radius: 17px;
+    background: white;
+    box-shadow: 0 5px 20px rgba(33, 63, 36, .055);
+    transition: transform .28s ease, box-shadow .28s ease;
+}
+
+#gnProductPage .gn-product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 32px rgba(33, 63, 36, .12);
+}
+
+#gnProductPage .gn-product-image-wrap {
+    height: 225px;
+    position: relative;
+    overflow: hidden;
+    background: #eef3e8;
+}
+
+#gnProductPage .gn-product-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .45s ease;
+}
+
+#gnProductPage .gn-product-card:hover .gn-product-image {
+    transform: scale(1.055);
+}
+
+#gnProductPage .gn-category-tag {
+    position: absolute;
+    left: 13px;
+    top: 13px;
+    padding: 7px 11px;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, .94);
+    color: var(--gn-green);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+#gnProductPage .gn-stock-tag {
+    position: absolute;
+    right: 12px;
+    top: 13px;
+    padding: 7px 10px;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, .95);
+    color: #39744a;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+#gnProductPage .gn-stock-tag.gn-out {
+    color: #b94c3c;
+}
+
+#gnProductPage .gn-wishlist-btn {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    display: grid;
+    place-items: center;
+    width: 41px;
+    height: 41px;
+    border: 1px solid rgba(255, 255, 255, .7);
+    border-radius: 50%;
+    background: white;
+    color: #55745a;
+    font-size: 23px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, .09);
+    transition: .2s ease;
+}
+
+#gnProductPage .gn-wishlist-btn:hover,
+#gnProductPage .gn-wishlist-btn.gn-loved {
+    background: #fff0ee;
+    color: #d74d60;
+}
+
+#gnProductPage .gn-product-info {
+    padding: 19px;
+}
+
+#gnProductPage .gn-product-info h3 {
+    margin: 0 0 9px;
+    color: #263d2c;
+    font-size: 19px;
+    line-height: 1.35;
+}
+
+#gnProductPage .gn-rating {
+    margin-bottom: 15px;
+    color: #9a7730;
+    font-size: 13px;
+}
+
+#gnProductPage .gn-price-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 17px;
+}
+
+#gnProductPage .gn-price {
+    color: var(--gn-green);
+    font-size: 23px;
+    font-weight: 800;
+}
+
+#gnProductPage .gn-price-label {
+    color: #859184;
+    font-size: 11px;
+}
+
+#gnProductPage .gn-add-cart {
+    width: 100%;
+    min-height: 45px;
+    padding: 10px;
+    border: none;
+    border-radius: 9px;
+    background: var(--gn-green);
+    color: white;
+    font-size: 13px;
+    font-weight: 700;
+    transition: background .2s ease, transform .2s ease;
+}
+
+#gnProductPage .gn-add-cart:hover:not(:disabled) {
+    background: var(--gn-dark);
+    transform: translateY(-1px);
+}
+
+#gnProductPage .gn-add-cart:disabled {
+    cursor: not-allowed;
+    background: #d7ddd3;
+    color: #6d766b;
+}
+
+/* NO RESULTS */
+
+#gnProductPage .gn-empty-state {
+    grid-column: 1 / -1;
+    padding: 55px 20px;
+    border: 1px dashed #d6e2cf;
+    border-radius: 15px;
+    background: white;
+    text-align: center;
+}
+
+#gnProductPage .gn-empty-state div {
+    margin-bottom: 12px;
+    font-size: 45px;
+}
+
+#gnProductPage .gn-empty-state h3 {
+    margin: 0 0 8px;
+    color: var(--gn-green);
+}
+
+#gnProductPage .gn-empty-state p {
+    margin: 0 0 18px;
+    color: var(--gn-muted);
+}
+
+#gnProductPage .gn-empty-state button {
+    padding: 11px 18px;
+    border: none;
+    border-radius: 8px;
+    background: var(--gn-green);
+    color: white;
+}
+
+/* FOOTER */
+
+#gnProductPage .gn-footer {
+    padding: 35px 0;
+    background: #173d2a;
+    color: #eaf2e6;
+}
+
+#gnProductPage .gn-footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+#gnProductPage .gn-footer h3 {
+    margin: 0 0 8px;
+    font-size: 21px;
+}
+
+#gnProductPage .gn-footer p {
+    margin: 0;
+    color: #c3d3c0;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+#gnProductPage .gn-footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+#gnProductPage .gn-footer-links a {
+    color: #eaf2e6;
+    font-size: 13px;
+}
+
+#gnProductPage .gn-footer-links a:hover {
+    text-decoration: underline;
+}
+
+/* ANIMATIONS */
+
+@keyframes gnFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes gnDrop {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* TABLET */
+
+@media (max-width: 950px) {
+    #gnProductPage .gn-nav-inner {
+        flex-wrap: wrap;
+        padding: 13px 0;
+    }
+
+    #gnProductPage .gn-menu-toggle {
+        display: inline-flex;
+    }
+
+    #gnProductPage .gn-nav-links {
+        display: none;
+        order: 3;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 8px 0;
+    }
+
+    #gnProductPage .gn-nav-links.gn-mobile-open {
+        display: flex;
+    }
+
+    #gnProductPage .gn-nav-links a {
+        padding: 12px;
+        border-radius: 8px;
+    }
+
+    #gnProductPage .gn-nav-links a:hover {
+        background: #f1f6ed;
+    }
+
+    #gnProductPage .gn-nav-links a.gn-active::after {
+        display: none;
+    }
+
+    #gnProductPage .gn-hero-content {
+        grid-template-columns: 1fr .55fr;
+    }
+
+    #gnProductPage .gn-product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    #gnProductPage .gn-filter-panel {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+    #gnProductPage .gn-container {
+        width: 92%;
+    }
+
+    #gnProductPage .gn-nav-inner {
+        gap: 9px;
+    }
+
+    #gnProductPage .gn-logo {
+        font-size: 21px;
+    }
+
+    #gnProductPage .gn-nav-actions {
+        gap: 6px;
+    }
+
+    #gnProductPage .gn-icon-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 17px;
+    }
+
+    #gnProductPage .gn-hero {
+        padding: 39px 0;
+    }
+
+    #gnProductPage .gn-hero-content {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    #gnProductPage .gn-hero h1 {
+        font-size: 36px;
+    }
+
+    #gnProductPage .gn-hero p {
+        font-size: 14px;
+    }
+
+    #gnProductPage .gn-hero-visual {
+        min-height: 100px;
+        justify-content: flex-start;
+    }
+
+    #gnProductPage .gn-hero-visual span {
+        font-size: 92px;
+    }
+
+    #gnProductPage .gn-tools {
+        padding-top: 20px;
+    }
+
+    #gnProductPage .gn-tools-top {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    #gnProductPage .gn-search {
+        max-width: none;
+    }
+
+    #gnProductPage .gn-filter-toggle {
+        width: 100%;
+    }
+
+    #gnProductPage .gn-filter-panel,
+    #gnProductPage .gn-filter-panel.gn-show {
+        grid-template-columns: 1fr;
+    }
+
+    #gnProductPage .gn-section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    #gnProductPage .gn-product-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    #gnProductPage .gn-product-image-wrap {
+        height: 245px;
+    }
+
+    #gnProductPage .gn-footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    #gnProductPage .gn-profile-panel {
+        right: -5px;
+        width: min(270px, 88vw);
+    }
+}
+    </style>
+
+</head>
+
+
+<body>
+    <header>
+
+            <div id="gnProductPage">
+
+                <!-- NAVBAR -->
+                <header class="gn-navbar">
+                    <div class="gn-nav-inner">
+
+                        <a href="home.html" class="gn-logo">
+                            🌿 GreenNest
+                        </a>
+
+                        <button
+                            class="gn-menu-toggle"
+                            id="gnMenuToggle"
+                            type="button"
+                            aria-label="Toggle navigation"
+                            aria-expanded="false">
+                            ☰
+                        </button>
+
+                    <nav class="gn-nav-links" id="gnNavLinks">
+                        <a href="home.html">Home</a>
+                        <a href="product.html" class="active">Plants</a>
+                        <a href="services.html">Services</a>
+                        <a href="about.html">About</a>
+                        <a href="contact.html">Contact</a>
+                    </nav>
+
+                    <div class="gn-nav-actions">
+
+                        <!-- WISHLIST -->
+                        <a
+                            href="wishlist.html"
+                            class="gn-icon-btn"
+                            id="gnWishlistIcon"
+                            aria-label="My Wishlist"
+                            title="My Wishlist">
+                            ♡
+                            <span class="gn-count" id="gnWishlistCount">0</span>
+                        </a>
+
+                        <!-- CART -->
+                        <a
+                            href="cart.html"
+                            class="gn-icon-btn"
+                            id="gnCartIcon"
+                            aria-label="Shopping Cart"
+                            title="Shopping Cart">
+                            🛒
+                            <span class="gn-count" id="gnCartCount">0</span>
+                        </a>
+
+                        <!-- PROFILE -->
+                        <div class="gn-profile-wrap">
+
+                            <button
+                                class="gn-icon-btn"
+                                id="gnProfileIcon"
+                                type="button"
+                                aria-label="My Profile"
+                                aria-expanded="false"
+                                title="My Profile">
+                                👤
+                            </button>
+
+                            <div
+                                class="gn-profile-panel"
+                                id="gnProfilePanel"
+                                aria-hidden="true">
+
+                                <div class="gn-profile-heading">
+                                    <div class="gn-profile-avatar">🌱</div>
+
+                                    <h3 id="gnWelcome">Welcome!</h3>
+
+                                    <p id="gnProfileEmail">
+                                        Sign in to view your profile
+                                    </p>
+
+                                    <p id="gnProfilePhone"></p>
+                                </div>
+
+                                <div class="gn-profile-links">
+                                    <a href="cart.html">🛒 My Cart</a>
+                                    <a href="wishlist.html">♡ My Wishlist</a>
+                                    <a href="order.html">📦 My Orders</a>
+                                    <a href="ebooking.html">
+                                        🌼 My Gardener Bookings
+                                    </a>
+                                </div>
+
+                                <a
+                                    href="login.html"
+                                    id="gnLoginLink"
+                                    class="gn-login-link">
+                                    Login / Sign Up
+                                </a>
+
+                                <button
+                                    type="button"
+                                    id="gnLogout"
+                                    class="gn-logout">
+                                    Logout
+                                </button>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </header>
+
+            <!-- HERO SECTION -->
+            <section class="gn-hero">
+                <div class="gn-hero-content">
+
+                    <span class="gn-eyebrow">
+                        GROW SOMETHING BEAUTIFUL
+                    </span>
+
+                    <h1>Find Your Perfect Plant 🌿</h1>
+
+                    <p>
+                        Bring nature home with our beautiful collection of
+                        indoor plants, flowering favourites and outdoor greens.
+                    </p>
+
+                    <a href="#gnProducts" class="gn-hero-button">
+                        Explore Plants →
+                    </a>
+
+                </div>
+
+                <div class="gn-hero-visual" aria-hidden="true">
+                    <div class="gn-hero-circle">
+                        <span>🪴</span>
+                    </div>
+                    <span class="gn-floating-leaf gn-leaf-one">🍃</span>
+                    <span class="gn-floating-leaf gn-leaf-two">🌿</span>
+                </div>
+            </section>
+
+            <!-- SEARCH AND FILTERS -->
+            <section class="gn-tools">
+
+                <div class="gn-tools-top">
+
+                    <div class="gn-search">
+                        <span class="gn-search-icon">⌕</span>
+
+                        <input
+                            type="search"
+                            id="gnSearch"
+                            placeholder="Search plants by name..."
+                            aria-label="Search plants">
+                    </div>
+
+                    <button
+                        type="button"
+                        class="gn-filter-toggle"
+                        id="gnFilterToggle"
+                        aria-expanded="false"
+                        aria-controls="gnFilterPanel">
+                        ☰ Filters
+                    </button>
+
+                </div>
+
+                <div class="gn-filter-panel" id="gnFilterPanel">
+
+                    <div class="gn-filter-group">
+                        <label for="gnCategory">Plant Category</label>
+
+                        <select id="gnCategory">
+                            <option value="all">All Categories</option>
+                            <option value="indoor">Indoor Plants</option>
+                            <option value="outdoor">Outdoor Plants</option>
+                            <option value="flowering">Flowering Plants</option>
+                        </select>
+                    </div>
+
+                    <div class="gn-filter-group">
+                        <label for="gnPrice">Price Range</label>
+
+                <select id="gnPrice">
+                    <option value="all">All Prices</option>
+                    <option value="under300">Under ₹300</option>
+                    <option value="300-500">₹300 – ₹500</option>
+                    <option value="500-1000">₹500 – ₹1,000</option>
+                </select>
+            </div>
+
+            <div class="gn-filter-group">
+                <label for="gnAvailability">Availability</label>
+
+                <select id="gnAvailability">
+                    <option value="all">All Plants</option>
+                    <option value="in-stock">In Stock</option>
+                    <option value="out-of-stock">Out of Stock</option>
+                </select>
+            </div>
+
+            <button
+                type="button"
+                class="gn-reset-btn"
+                id="gnResetFilters">
+                Reset Filters ↺
+            </button>
+
+        </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <main class="gn-products-section" id="gnProducts">
+
+        <div class="gn-section-heading">
+            <div>
+                <span class="gn-eyebrow">OUR GREEN COLLECTION</span>
+                <h2>Explore Our Plants</h2>
+                <p>Choose your favourite green companion.</p>
+            </div>
+
+            <span class="gn-results" id="gnResultsCount">
+                6 plants
+            </span>
+        </div>
+
+        <!-- JavaScript will render product cards inside this grid -->
+        <div class="gn-product-grid" id="gnProductGrid">
+
+            <!-- Fallback cards: visible before JavaScript is added -->
+
+            <article class="gn-product-card">
+                <div class="gn-product-image-wrap">
+                    <img
+                        class="gn-product-image"
+                        src="images/snake plant.jpg"
+                        alt="Snake Plant">
+
+                    <span class="gn-category-tag">Indoor</span>
+                    <span class="gn-stock-tag">In Stock</span>
+
+                    <button
+                        type="button"
+                        class="gn-wishlist-btn"
+                        aria-label="Add Snake Plant to wishlist">
+                        ♡
+                    </button>
+                </div>
+
+                <div class="gn-product-info">
+                    <div class="gn-rating">★ 4.8</div>
+                    <h3>Snake Plant</h3>
+                    <p class="gn-product-description">
+                        A low-maintenance plant for your home.
+                    </p>
+
+                    <div class="gn-price-row">
+                        <div>
+                            <span class="gn-price">₹499</span>
+                            <span class="gn-price-label">/ plant</span>
+                        </div>
+                    </div>
+
+                    <button
+                        type="button"
+                        class="gn-add-cart"
+                        data-product-id="1">
+                        Add to Cart +
+                    </button>
+                </div>
+            </article>
+
+            <article class="gn-product-card">
+                <div class="gn-product-image-wrap">
+                    <img
+                        class="gn-product-image"
+                        src="images/peace lily.jpg"
+                        alt="Peace Lily">
+
+                    <span class="gn-category-tag">Flowering</span>
+                    <span class="gn-stock-tag">In Stock</span>
+
+                    <button
+                        type="button"
+                        class="gn-wishlist-btn"
+                        aria-label="Add Peace Lily to wishlist">
+                        ♡
+                    </button>
+                </div>
+
+                <div class="gn-product-info">
+                    <div class="gn-rating">★ 4.7</div>
+                    <h3>Peace Lily</h3>
+                    <p class="gn-product-description">
+                        Elegant foliage with beautiful white blooms.
+                    </p>
+
+                    <div class="gn-price-row">
+                        <div>
+                            <span class="gn-price">₹599</span>
+                            <span class="gn-price-label">/ plant</span>
+                        </div>
+                    </div>
+
+                    <button
+                        type="button"
+                        class="gn-add-cart"
+                        data-product-id="2">
+                        Add to Cart +
+                    </button>
+                </div>
+            </article>
+
+            <article class="gn-product-card">
+                <div class="gn-product-image-wrap">
+                    <img
+                        class="gn-product-image"
+                        src="images/hibiscus.jpeg"
+                        alt="Hibiscus">
+
+                    <span class="gn-category-tag">Flowering</span>
+                    <span class="gn-stock-tag">In Stock</span>
+
+                    <button
+                        type="button"
+                        class="gn-wishlist-btn"
+                        aria-label="Add Hibiscus to wishlist">
+                        ♡
+                    </button>
+                </div>
+
+                <div class="gn-product-info">
+                    <div class="gn-rating">★ 4.6</div>
+                    <h3>Hibiscus</h3>
+                    <p class="gn-product-description">
+                        Add a colourful flowering touch to your garden.
+                    </p>
+
+                    <div class="gn-price-row">
+                        <div>
+                            <span class="gn-price">₹399</span>
+                            <span class="gn-price-label">/ plant</span>
+                        </div>
+                    </div>
+
+                    <button
+                        type="button"
+                        class="gn-add-cart"
+                        data-product-id="3">
+                        Add to Cart +
+                    </button>
+                </div>
+            </article>
+
+            <article class="gn-product-card">
+                <div class="gn-product-image-wrap">
+                    <img
+                        class="gn-product-image"
+                        src="images/rubber plant.jpg"
+                        alt="Rubber Plant">
+
+                    <span class="gn-category-tag">Indoor</span>
+                    <span class="gn-stock-tag">In Stock</span>
+
+                    <button
+                        type="button"
+                        class="gn-wishlist-btn"
+                        aria-label="Add Rubber Plant to wishlist">
+                        ♡
+                    </button>
+                </div>
+
+                <div class="gn-product-info">
+                    <div class="gn-rating">★ 4.8</div>
+                    <h3>Rubber Plant</h3>
+                    <p class="gn-product-description">
+                        A striking green plant for your interiors.
+                    </p>
+
+                    <div class="gn-price-row">
+                        <div>
+                            <span class="gn-price">₹699</span>
+                            <span class="gn-price-label">/ plant</span>
+                        </div>
+                    </div>
+
+                    <button
+                        type="button"
+                        class="gn-add-cart"
+                        data-product-id="4">
+                        Add to Cart +
+                    </button>
+                </div>
+            </article>
+
+            <article class="gn-product-card">
+                <div class="gn-product-image-wrap">
+                    <img
+                        class="gn-product-image"
+                        src="images/bougainvellia.jpg"
+                        alt="Bougainvillea">
+
+                    <span class="gn-category-tag">Outdoor</span>
+                    <span class="gn-stock-tag gn-out">Out of Stock</span>
+
+                    <button
+                        type="button"
+                        class="gn-wishlist-btn"
+                        aria-label="Add Bougainvillea to wishlist">
+                        ♡
+                    </button>
+                </div>
+
+                <div class="gn-product-info">
+                    <div class="gn-rating">★ 4.5</div>
+                    <h3>Bougainvillea</h3>
+                    <p class="gn-product-description">
+                        A colourful outdoor favourite for sunny spaces.
+                    </p>
+
+                    <div class="gn-price-row">
+                        <div>
+                            <span class="gn-price">₹799</span>
+                            <span class="gn-price-label">/ plant</span>
+                        </div>
+                    </div>
+
+                    <button
+                        type="button"
+                        class="gn-add-cart"
+                        data-product-id="5"
+                        disabled>
+                        Currently Unavailable
+                    </button>
+                </div>
+            </article>
+
+            <article class="gn-product-card">
+                <div class="gn-product-image-wrap">
+                    <img
+                        class="gn-product-image"
+                        src="images/coriander.jpg"
+                        alt="Herbs and Coriander">
+
+                    <span class="gn-category-tag">Outdoor</span>
+                    <span class="gn-stock-tag">In Stock</span>
+
+                    <button
+                        type="button"
+                        class="gn-wishlist-btn"
+                        aria-label="Add Herbs and Coriander to wishlist">
+                        ♡
+                    </button>
+                </div>
+
+                <div class="gn-product-info">
+                    <div class="gn-rating">★ 4.4</div>
+                    <h3>Herbs &amp; Coriander</h3>
+                    <p class="gn-product-description">
+                        Fresh herbs for your kitchen garden.
+                    </p>
+
+                    <div class="gn-price-row">
+                        <div>
+                            <span class="gn-price">₹299</span>
+                            <span class="gn-price-label">/ plant</span>
+                        </div>
+                    </div>
+
+                    <button
+                        type="button"
+                        class="gn-add-cart"
+                        data-product-id="6">
+                        Add to Cart +
+                    </button>
+                </div>
+            </article>
+
+        </div>
+
+        <div class="gn-empty-state" id="gnEmptyState" hidden>
+            <div class="gn-empty-icon">🌱</div>
+            <h3>No plants found</h3>
+            <p>Try another search or reset your filters.</p>
+
+            <button
+                type="button"
+                class="gn-reset-btn"
+                id="gnEmptyReset">
+                Show All Plants
+            </button>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="gn-footer">
+        <div class="gn-footer-inner">
+
+            <div class="gn-footer-brand">
+                <a href="home.html" class="gn-logo">
+                    🌿 GreenNest
+                </a>
+
+                <p>
+                    Growing happiness, one plant at a time.
+                    Make every space a little greener.
+                </p>
+            </div>
+
+            <div class="gn-footer-links">
+                <h4>Quick Links</h4>
+                <a href="home.html">Home</a>
+                <a href="product.html">Plants</a>
+                <a href="services.html">Services</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+            <div class="gn-footer-links">
+                <h4>My GreenNest</h4>
+                <a href="cart.html">Shopping Cart</a>
+                <a href="wishlist.html">Wishlist</a>
+                <a href="order.html">My Orders</a>
+                <a href="ebooking.html">Gardener Booking</a>
+            </div>
+
+        </div>
+
+        <div class="gn-footer-bottom">
+            <p>© 2026 GreenNest. Grow green, live happy. 🌱</p>
+        </div>
+    </footer>
+
+</div>
+
+     <script>
+
+/* =========================================
+   GREENNEST PRODUCT PAGE — JAVASCRIPT
+========================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const root = document.getElementById("gnProductPage");
+
+    // Safety check: run only on the GreenNest product page
+    if (!root) return;
+
+    /* =========================================
+       1. PRODUCT DATA
+    ========================================= */
+
+    const products = [
+        {
+            id: 1,
+            name: "Snake Plant",
+            category: "indoor",
+            price: 499,
+            rating: 4.8,
+            availability: "in-stock",
+            image: "images/snake plant.jpg",
+            description: "A low-maintenance plant for your home."
+        },
+        {
+            id: 2,
+            name: "Peace Lily",
+            category: "flowering",
+            price: 599,
+            rating: 4.7,
+            availability: "in-stock",
+            image: "images/peace lily.jpg",
+            description: "Elegant foliage with beautiful white blooms."
+        },
+        {
+            id: 3,
+            name: "Hibiscus",
+            category: "flowering",
+            price: 399,
+            rating: 4.6,
+            availability: "in-stock",
+            image: "images/hibiscus.jpeg",
+            description: "Add a colourful flowering touch to your garden."
+        },
+        {
+            id: 4,
+            name: "Rubber Plant",
+            category: "indoor",
+            price: 699,
+            rating: 4.8,
+            availability: "in-stock",
+            image: "images/rubber plant.jpg",
+            description: "A striking green plant for your interiors."
+        },
+        {
+            id: 5,
+            name: "Bougainvillea",
+            category: "outdoor",
+            price: 799,
+            rating: 4.5,
+            availability: "out-of-stock",
+            image: "images/bougainvellia.jpg",
+            description: "A colourful outdoor favourite for sunny spaces."
+        },
+        {
+            id: 6,
+            name: "Herbs & Coriander",
+            category: "outdoor",
+            price: 299,
+            rating: 4.4,
+            availability: "in-stock",
+            image: "images/coriander.jpg",
+            description: "Fresh herbs for your kitchen garden."
+        }
+    ];
+
+    /* =========================================
+       2. HTML ELEMENTS
+    ========================================= */
+
+    const searchInput = document.getElementById("gnSearch");
+    const categoryFilter = document.getElementById("gnCategory");
+    const priceFilter = document.getElementById("gnPrice");
+    const availabilityFilter = document.getElementById("gnAvailability");
+
+    const filterToggle = document.getElementById("gnFilterToggle");
+    const filterPanel = document.getElementById("gnFilterPanel");
+    const resetButton = document.getElementById("gnResetFilters");
+    const emptyReset = document.getElementById("gnEmptyReset");
+
+    const productGrid = document.getElementById("gnProductGrid");
+    const resultsCount = document.getElementById("gnResultsCount");
+    const emptyState = document.getElementById("gnEmptyState");
+
+    const cartCount = document.getElementById("gnCartCount");
+    const wishlistCount = document.getElementById("gnWishlistCount");
+
+    const profileIcon = document.getElementById("gnProfileIcon");
+    const profilePanel = document.getElementById("gnProfilePanel");
+    const welcomeText = document.getElementById("gnWelcome");
+    const profileEmail = document.getElementById("gnProfileEmail");
+    const profilePhone = document.getElementById("gnProfilePhone");
+    const loginLink = document.getElementById("gnLoginLink");
+    const logoutButton = document.getElementById("gnLogout");
+
+    const menuToggle = document.getElementById("gnMenuToggle");
+    const navLinks = document.getElementById("gnNavLinks");
+
+    /* =========================================
+       3. CURRENT USER AND STORAGE
+    ========================================= */
+
+    function getCurrentUser() {
+        try {
+            const savedUser = localStorage.getItem("currentUser");
+
+            if (!savedUser) return null;
+
+            const user = JSON.parse(savedUser);
+
+            if (!user || !user.email) return null;
+
+            return user;
+        } catch (error) {
+            console.error("Unable to read current user:", error);
+            return null;
+        }
+    }
+
+    function getUserKey(prefix) {
+        const user = getCurrentUser();
+
+        if (!user) return null;
+
+        const email = user.email.trim().toLowerCase();
+
+        return prefix + "_" + email;
+    }
+
+    function getStoredArray(key) {
+        if (!key) return [];
+
+        try {
+            const savedData = JSON.parse(
+                localStorage.getItem(key) || "[]"
+            );
+
+            return Array.isArray(savedData) ? savedData : [];
+        } catch (error) {
+            console.error("Unable to read saved data:", error);
+            return [];
+        }
+    }
+
+    function saveArray(key, array) {
+        if (!key) return false;
+
+        try {
+            localStorage.setItem(key, JSON.stringify(array));
+            return true;
+        } catch (error) {
+            console.error("Unable to save data:", error);
+            alert("Data save nahi ho paaya. Browser storage check karo.");
+            return false;
+        }
+    }
+
+    function getCart() {
+        return getStoredArray(getUserKey("cart"));
+    }
+
+    function getWishlist() {
+        return getStoredArray(getUserKey("wishlist"));
+    }
+
+    /* =========================================
+       4. LOGIN CHECK
+    ========================================= */
+
+    function requireLogin() {
+        if (getCurrentUser()) return true;
+
+        alert("Please login or create an account first.");
+        window.location.href = "login.html";
+        return false;
+    }
+
+    /* =========================================
+       5. UPDATE CART AND WISHLIST COUNTS
+    ========================================= */
+
+    function updateCounts() {
+        const user = getCurrentUser();
+
+        if (!user) {
+            cartCount.textContent = "0";
+            wishlistCount.textContent = "0";
+            return;
+        }
+
+        const cart = getCart();
+        const wishlist = getWishlist();
+
+        // Cart count includes item quantities
+        const totalCartItems = cart.reduce(function (total, item) {
+            return total + Math.max(0, Number(item.quantity) || 0);
+        }, 0);
+
+        cartCount.textContent = totalCartItems;
+        wishlistCount.textContent = wishlist.length;
+    }
+
+    /* =========================================
+       6. PROFILE DROPDOWN
+    ========================================= */
+
+    function updateProfile() {
+        const user = getCurrentUser();
+
+        if (user) {
+            welcomeText.textContent =
+                "Welcome, " + (user.name || "Plant Lover") + "!";
+
+            profileEmail.textContent = user.email || "";
+            profilePhone.textContent = user.phone || "";
+
+            loginLink.style.display = "none";
+            logoutButton.style.display = "block";
+        } else {
+            welcomeText.textContent = "Welcome!";
+
+            profileEmail.textContent = "Sign in to view your profile";
+            profilePhone.textContent = "";
+
+            loginLink.style.display = "block";
+            logoutButton.style.display = "none";
+        }
+    }
+
+    profileIcon.addEventListener("click", function (event) {
+        event.stopPropagation();
+
+        const isOpen = profilePanel.classList.toggle("gn-open");
+
+        profileIcon.setAttribute("aria-expanded", String(isOpen));
+        profilePanel.setAttribute("aria-hidden", String(!isOpen));
+    });
+
+    document.addEventListener("click", function (event) {
+        if (!event.target.closest(".gn-profile-wrap")) {
+            profilePanel.classList.remove("gn-open");
+
+            profileIcon.setAttribute("aria-expanded", "false");
+            profilePanel.setAttribute("aria-hidden", "true");
+        }
+    });
+
+    profilePanel.addEventListener("click", function (event) {
+        const link = event.target.closest("a");
+
+        if (!link) return;
+
+        const needsAccount =
+            link.href.includes("cart.html") ||
+            link.href.includes("wishlist.html") ||
+            link.href.includes("order.html") ||
+            link.href.includes("ebooking.html");
+
+        if (needsAccount && !getCurrentUser()) {
+            event.preventDefault();
+            window.location.href = "login.html";
+        }
+    });
+
+    logoutButton.addEventListener("click", function () {
+        if (!getCurrentUser()) return;
+
+        const confirmed = confirm("Are you sure you want to logout?");
+
+        if (!confirmed) return;
+
+        localStorage.removeItem("currentUser");
+        localStorage.removeItem("isAdmin");
+
+        window.location.href = "index.html";
+    });
+
+    /* =========================================
+       7. MOBILE NAVIGATION
+    ========================================= */
+
+    menuToggle.addEventListener("click", function () {
+        const isOpen = navLinks.classList.toggle("gn-open");
+
+        menuToggle.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    navLinks.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () {
+            navLinks.classList.remove("gn-open");
+            menuToggle.setAttribute("aria-expanded", "false");
+        });
+    });
+
+    /* =========================================
+       8. FILTER DROPDOWN
+    ========================================= */
+
+    filterToggle.addEventListener("click", function () {
+        const isOpen = filterPanel.classList.toggle("gn-show");
+
+        filterToggle.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    /* =========================================
+       9. RENDER PRODUCT CARDS
+    ========================================= */
+
+    function renderProducts(list) {
+        productGrid.replaceChildren();
+
+        const wishlist = getWishlist();
+
+        list.forEach(function (product) {
+            const isOutOfStock =
+                product.availability === "out-of-stock";
+
+            const isLoved = wishlist.some(function (item) {
+                return Number(item.id) === product.id;
+            });
+
+            const card = document.createElement("article");
+            card.className = "gn-product-card";
+
+            const imageWrap = document.createElement("div");
+            imageWrap.className = "gn-product-image-wrap";
+
+            const image = document.createElement("img");
+            image.className = "gn-product-image";
+            image.src = product.image;
+            image.alt = product.name;
+            image.loading = "lazy";
+
+            image.addEventListener("error", function () {
+                image.alt = product.name + " image unavailable";
+            });
+
+            const categoryTag = document.createElement("span");
+            categoryTag.className = "gn-category-tag";
+            categoryTag.textContent =
+                product.category.charAt(0).toUpperCase() +
+                product.category.slice(1);
+
+            const stockTag = document.createElement("span");
+            stockTag.className = "gn-stock-tag";
+
+            if (isOutOfStock) {
+                stockTag.classList.add("gn-out");
+                stockTag.textContent = "Out of Stock";
+            } else {
+                stockTag.textContent = "In Stock";
+            }
+
+            const wishlistButton = document.createElement("button");
+            wishlistButton.type = "button";
+            wishlistButton.className = "gn-wishlist-btn";
+
+            if (isLoved) {
+                wishlistButton.classList.add("gn-loved");
+            }
+
+            wishlistButton.textContent = isLoved ? "♥" : "♡";
+            wishlistButton.setAttribute(
+                "aria-label",
+                (isLoved ? "Remove " : "Add ") +
+                product.name +
+                (isLoved ? " from" : " to") +
+                " wishlist"
+            );
+
+            wishlistButton.dataset.wishlistId = product.id;
+
+            imageWrap.append(
+                image,
+                categoryTag,
+                stockTag,
+                wishlistButton
+            );
+
+            const info = document.createElement("div");
+            info.className = "gn-product-info";
+
+            const rating = document.createElement("div");
+            rating.className = "gn-rating";
+            rating.textContent = "★ " + product.rating;
+
+            const name = document.createElement("h3");
+            name.textContent = product.name;
+
+            const description = document.createElement("p");
+            description.className = "gn-product-description";
+            description.textContent = product.description;
+
+            const priceRow = document.createElement("div");
+            priceRow.className = "gn-price-row";
+
+            const price = document.createElement("span");
+            price.className = "gn-price";
+            price.textContent = "₹" + product.price;
+
+            const priceLabel = document.createElement("span");
+            priceLabel.className = "gn-price-label";
+            priceLabel.textContent = " / plant";
+
+            priceRow.append(price, priceLabel);
+
+            const addButton = document.createElement("button");
+            addButton.type = "button";
+            addButton.className = "gn-add-cart";
+            addButton.dataset.cartId = product.id;
+
+            if (isOutOfStock) {
+                addButton.disabled = true;
+                addButton.textContent = "Currently Unavailable";
+            } else {
+                addButton.textContent = "Add to Cart +";
+            }
+
+            info.append(
+                rating,
+                name,
+                description,
+                priceRow,
+                addButton
+            );
+
+            card.append(imageWrap, info);
+            productGrid.appendChild(card);
+        });
+
+        resultsCount.textContent =
+            list.length + (list.length === 1 ? " plant" : " plants");
+
+        emptyState.style.display = list.length === 0 ? "block" : "none";
+        productGrid.style.display = list.length === 0 ? "none" : "grid";
+    }
+
+    /* =========================================
+       10. SEARCH AND FILTER LOGIC
+    ========================================= */
+
+    function filterProducts() {
+        const searchTerm = searchInput.value.trim().toLowerCase();
+        const selectedCategory = categoryFilter.value;
+        const selectedPrice = priceFilter.value;
+        const selectedAvailability = availabilityFilter.value;
+
+        const filteredProducts = products.filter(function (product) {
+
+            const matchesSearch =
+                product.name.toLowerCase().includes(searchTerm);
+
+            const matchesCategory =
+                selectedCategory === "all" ||
+                product.category === selectedCategory;
+
+            let matchesPrice = true;
+
+            if (selectedPrice === "under300") {
+                matchesPrice = product.price < 300;
+            } else if (selectedPrice === "300-500") {
+                matchesPrice =
+                    product.price >= 300 && product.price <= 500;
+            } else if (selectedPrice === "500-1000") {
+                matchesPrice =
+                    product.price >= 500 && product.price <= 1000;
+            }
+
+            const matchesAvailability =
+                selectedAvailability === "all" ||
+                product.availability === selectedAvailability;
+
+            return (
+                matchesSearch &&
+                matchesCategory &&
+                matchesPrice &&
+                matchesAvailability
+            );
+        });
+
+        renderProducts(filteredProducts);
+    }
+
+    searchInput.addEventListener("input", filterProducts);
+    categoryFilter.addEventListener("change", filterProducts);
+    priceFilter.addEventListener("change", filterProducts);
+    availabilityFilter.addEventListener("change", filterProducts);
+
+    /* =========================================
+       11. RESET FILTERS
+    ========================================= */
+
+    function resetFilters() {
+        searchInput.value = "";
+        categoryFilter.value = "all";
+        priceFilter.value = "all";
+        availabilityFilter.value = "all";
+
+        filterProducts();
+    }
+
+    resetButton.addEventListener("click", resetFilters);
+    emptyReset.addEventListener("click", resetFilters);
+
+    /* =========================================
+       12. ADD TO CART
+    ========================================= */
+
+    function addToCart(productId) {
+        if (!requireLogin()) return;
+
+        const product = products.find(function (item) {
+            return item.id === productId;
+        });
+
+        if (!product || product.availability !== "in-stock") {
+            alert("This plant is currently unavailable.");
+            return;
+        }
+
+        const cartKey = getUserKey("cart");
+        const cart = getCart();
+
+        const existingItem = cart.find(function (item) {
+            return Number(item.id) === product.id;
+        });
+
+        if (existingItem) {
+            existingItem.quantity =
+                (Number(existingItem.quantity) || 0) + 1;
+        } else {
+            cart.push({
+                id: product.id,
+                name: product.name,
+                price: product.price,
+                image: product.image,
+                quantity: 1
+            });
+        }
+
+        if (saveArray(cartKey, cart)) {
+            updateCounts();
+            alert(product.name + " added to your cart! 🌿");
+        }
+    }
+
+    /* =========================================
+       13. ADD OR REMOVE WISHLIST ITEMS
+    ========================================= */
+
+    function toggleWishlist(productId) {
+        if (!requireLogin()) return;
+
+        const product = products.find(function (item) {
+            return item.id === productId;
+        });
+
+        if (!product) return;
+
+        const wishlistKey = getUserKey("wishlist");
+        const wishlist = getWishlist();
+
+        const existingIndex = wishlist.findIndex(function (item) {
+            return Number(item.id) === product.id;
+        });
+
+        if (existingIndex !== -1) {
+            wishlist.splice(existingIndex, 1);
+        } else {
+            wishlist.push({
+                id: product.id,
+                name: product.name,
+                price: product.price,
+                image: product.image,
+                category: product.category,
+                rating: product.rating
+            });
+        }
+
+        if (saveArray(wishlistKey, wishlist)) {
+            updateCounts();
+            filterProducts();
+        }
+    }
+
+    /* =========================================
+       14. PRODUCT BUTTON EVENTS
+    ========================================= */
+
+    productGrid.addEventListener("click", function (event) {
+        const cartButton = event.target.closest("[data-cart-id]");
+        const wishlistButton = event.target.closest("[data-wishlist-id]");
+
+        if (cartButton) {
+            if (cartButton.disabled) return;
+
+            addToCart(Number(cartButton.dataset.cartId));
+            return;
+        }
+
+        if (wishlistButton) {
+            toggleWishlist(Number(wishlistButton.dataset.wishlistId));
+        }
+    });
+
+    /* =========================================
+       15. INITIAL PAGE SETUP
+    ========================================= */
+
+    updateProfile();
+    updateCounts();
+    filterProducts();
+
+});
+
+
+    </script>
+</body>
+</html>

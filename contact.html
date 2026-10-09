@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+
+    <style>
+        /* =========================================
+   CONTACT PAGE
+========================================= */
+
+.contact-section {
+    padding: 70px 7%;
+    min-height: 80vh;
+}
+
+
+/* Heading */
+
+.contact-section > h1 {
+    text-align: center;
+    font-size: 38px;
+    margin-bottom: 12px;
+}
+
+.contact-section > p {
+    text-align: center;
+    color: #666;
+    margin-bottom: 45px;
+}
+
+
+/* Main two-card layout */
+
+.contact-container {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 30px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+
+/* Contact information */
+
+.contact-info {
+    padding: 35px;
+    border-radius: 20px;
+    background: white;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+    animation: contactLeft 0.7s ease;
+}
+
+.contact-info h2 {
+    margin-bottom: 30px;
+}
+
+.contact-item {
+    padding: 18px 0;
+    border-bottom: 1px solid #eee;
+    transition: 0.3s ease;
+}
+
+.contact-item:last-child {
+    border-bottom: none;
+}
+
+.contact-item:hover {
+    transform: translateX(6px);
+}
+
+.contact-item h3 {
+    margin-bottom: 6px;
+}
+
+.contact-item p {
+    color: #666;
+}
+
+
+/* Contact form */
+
+.contact-form {
+    padding: 35px;
+    border-radius: 20px;
+    background: white;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+    animation: contactRight 0.7s ease;
+}
+
+.contact-form h2 {
+    margin-bottom: 25px;
+}
+
+
+/* Form */
+
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form label {
+    margin-bottom: 7px;
+    font-weight: 600;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 13px 15px;
+
+    border: 1px solid #ddd;
+    border-radius: 10px;
+
+    outline: none;
+
+    margin-bottom: 20px;
+
+    font-family: inherit;
+
+    transition: 0.3s ease;
+}
+
+
+/* Focus effect */
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #4caf50;
+
+    box-shadow:
+        0 0 0 3px rgba(76, 175, 80, 0.12);
+}
+
+
+/* Message box */
+
+.contact-form textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+
+
+/* Send button */
+
+.contact-btn {
+    padding: 14px;
+
+    border: none;
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.contact-btn:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+footer {
+    background: #0f5132;
+    color: rgb(17, 17, 17);
+    padding: 50px 7% 20px;
+    margin-top: 60px;
+}
+
+/* Main footer layout */
+.footer-container {
+    max-width: 1200px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+    gap: 40px;
+}
+
+/* Each column */
+.footer-column {
+    padding: 10px;
+}
+
+/* Text */
+.footer-column p {
+    color: #060606;
+    font-size: 15px;
+    line-height: 1.8;
+    margin: 0;
+    white-space: pre-line;
+}
+
+/* GreenNest first column */
+.footer-column:first-child p {
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+/* Navigation links */
+.footer-column a {
+    display: block;
+
+    color: #0e0f0e;
+    text-decoration: none;
+
+    font-size: 15px;
+    margin-bottom: 14px;
+
+    transition: 0.3s ease;
+}
+
+/* Hover effect */
+.footer-column a:hover {
+    color: rgb(9, 8, 8);
+    transform: translateX(5px);
+}
+
+
+/* =========================
+   FOOTER BOTTOM
+========================= */
+
+.footer-bottom {
+    max-width: 1200px;
+    margin: 35px auto 0;
+
+    padding-top: 20px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+
+    text-align: center;
+
+    color: #0b0b0b;
+    font-size: 14px;
+    line-height: 2;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 900px) {
+
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    footer {
+        padding: 40px 6% 20px;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .footer-column {
+        padding: 0;
+    }
+
+    .footer-bottom {
+        margin-top: 25px;
+    }
+}
+
+
+/* Animations */
+
+@keyframes contactLeft {
+
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+}
+
+@keyframes contactRight {
+
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+}
+
+
+/* Responsive */
+
+@media (max-width: 768px) {
+
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-section {
+        padding: 50px 20px;
+    }
+
+    .contact-section > h1 {
+        font-size: 30px;
+    }
+
+}
+    </style>
+</head>
+<body>
+
+       <main>
+
+    <section class="contact-section">
+
+        <h1>Contact Us 🌿</h1>
+
+        <p>
+            Have a question or need help?
+            We'd love to hear from you.
+        </p>
+
+        <div class="contact-container">
+
+            <!-- Contact Information -->
+            <div class="contact-info">
+
+                <h2>Get In Touch</h2>
+
+                <div class="contact-item">
+                    <h3>📍 Address</h3>
+                    <p>Delhi, India</p>
+                </div>
+
+                <div class="contact-item">
+                    <h3>📞 Phone</h3>
+                    <p>+91 XXXXX XXXXX</p>
+                </div>
+
+                <div class="contact-item">
+                    <h3>📧 Email</h3>
+                    <p>support@greennest.com</p>
+                </div>
+
+            </div>
+
+
+            <!-- Contact Form -->
+            <div class="contact-form">
+
+                <h2>Send Us a Message</h2>
+
+                <form>
+
+                    <label for="contactName">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="contactName"
+                        placeholder="Enter your name"
+                    >
+
+
+                    <label for="contactEmail">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="contactEmail"
+                        placeholder="Enter your email"
+                    >
+
+
+                    <label for="contactPhone">
+                        Phone Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="contactPhone"
+                        placeholder="Enter phone number"
+                    >
+
+
+                    <label for="contactMessage">
+                        Message
+                    </label>
+
+                    <textarea
+                        id="contactMessage"
+                        placeholder="Write your message..."
+                    ></textarea>
+
+
+                    <button
+                        type="button"
+                        class="contact-btn"
+                    >
+                        Send Message
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+    <footer>
+    <div class="footer-container">
+
+    <div class="footer-column">
+        <p>🌿 GreenNest
+                Bringing nature closer to your home
+                with quality plants and expert
+                gardening services.</p>
+    </div>
+
+    <div class="footer-column">
+       <a href="home.html">Home</a>
+        <a href="product.html">Plant</a>
+       <a href="services.html">Services</a>
+        <a href="about.html">About</a>
+       <a href="contact.html">Contact</a>
+    </div>
+
+    <div class="footer-column">
+        <p>My Account
+           My Orders
+           Wishlist
+           Cart
+           Book a Gardener</p>
+    </div>
+
+    <div class="footer-column">
+        <p>📍 Delhi, India
+📧 support@greennest.com
+📞 +91 XXXXX XXXXX</p>
+    </div>
+    </div>
+    <div class="footer-bottom">
+        ────────────────────────────────────
+
+© 2026 GreenNest. All Rights Reserved.
+
+Privacy Policy  |  Terms & Conditions
+    </div>
+
+   </footer> 
+</body>
+</html>

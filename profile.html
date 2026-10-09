@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+</head>
+<body>
+    <main>
+        <section class="profile-section">
+            <div class="profile-container">
+                <h1>My Profile👤</h1>
+                <div class="profile-info">
+                    <h2>Welcome,<span id="profileName"></span>🍀</h2>
+
+                    <p> 
+                        <strong>Email:</strong><span id="profileEmail"></span>
+                    </p>
+                     <p> 
+                        <strong>Phone:</strong><span id="profilePhone"></span>
+                    </p>
+
+                </div>
+            </div>
+            
+        </section>
+    </main>
+
+    <script>[]
+        const currentUser = JSON.parse(
+            localStorage.getItem("currentUser")
+        );
+        if (currentUser){
+            document.getElementById("profileName").textContent=currentUser.name;
+
+            document.getElementById("profileEmail").textContent=currentUser.email;
+
+            document.getElementById("profilePhone").textContent=currentUser.phone;
+        } else{
+            alert("Please Login First");
+            window.location.href("login.html");
+        }
+    </script>
+</body>
+</html>

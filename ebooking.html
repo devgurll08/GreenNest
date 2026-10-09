@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>My Gardener Bookings</title>
+ <style>
+
+       body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+
+    background-image: url("images/booking.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    min-height: 100vh;
+}
+
+.booking-section {
+    min-height: 100vh;
+    padding: 60px 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.booking-container {
+    width: 100%;
+    max-width: 650px;
+
+    background: white;
+
+    padding: 40px;
+
+    border-radius: 22px;
+
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.10);
+}
+
+    .booking-card{
+        border: 1px solid #ddd;
+        border-radius: 15px;
+        padding:20px;
+        margin-bottom: 20px;
+        background: white;
+    }
+        </style>
+</head>
+<body>
+    <main>
+        <section class="booking-section">
+
+            <div class="booking-container">
+                <h1>My Gardener Bookings🍀</h1>
+
+                <p class="booking-subtitle">Manage your gardener appointments here.</p>
+
+                <div id="bookingsList">
+                    <!--Bookings will appear here-->
+                
+                </div>
+            </div>
+        </section>
+    </main>
+
+<script>
+
+    const currentUser =
+        JSON.parse(localStorage.getItem("currentUser"));
+
+    const bookingsList =
+        document.getElementById("bookingsList");
+
+
+    // ==========================================
+    // CHECK LOGIN
+    // ==========================================
+
+    if (!currentUser) {
+
+        alert("Please login first. 🌿");
+
+        window.location.href = "login.html";
+
+    }
+
+
+    // ==========================================
+    // DISPLAY BOOKINGS
+    // ==========================================
+
+    function displayBookings() {
+
+        const allBookings =
+            JSON.parse(
+                localStorage.getItem("gardenerBookings")
+            ) || [];
+
+
+        // Only current user's bookings
+        const userBookings =
+            allBookings.filter(function (booking) {
+
+                return booking.userEmail === currentUser.email;
+
+            });
+
+
+        // No bookings
+        if (userBookings.length === 0) {
+
+            bookingsList.innerHTML = `
+                <div class="no-bookings">
+                    <p>You don't have any gardener bookings yet. 🌱</p>
+                </div>
+            `;
+
+            return;
+        }
+
+
+        bookingsList.innerHTML = "";
+
+
+        userBookings.forEach(function (booking) {
+
+            // ==================================
+            // BOOKING DATE + TIME
+            // ==================================
+
+            const bookingDateTime =
+                new Date(
+                    booking.date + "T" + booking.time
+                );
+
+
+            // ==================================
+            // CANCELLATION DEADLINE
+            // 30 MINUTES BEFORE BOOKING
+            // ==================================
+
+            const cancellationDeadline =
+                new Date(
+                    bookingDateTime.getTime() -
+                    30 * 60 * 1000
+                );
+
+
+            const now = new Date();
+
+
+            const canCancel =
+                now < cancellationDeadline;
+
+
+            // ==================================
+            // FORMAT DATE
+            // ==================================
+
+            const formattedDate =
+                new Date(
+                    booking.date + "T00:00:00"
+                ).toLocaleDateString(
+                    "en-IN",
+                    {
+                        day: "numeric",
+                        month: "long",
+                        year: "numeric"
+                    }
+                );
+
+
+            // ==================================
+            // FORMAT TIME
+            // ==================================
+
+            const formattedTime =
+                bookingDateTime.toLocaleTimeString(
+                    "en-IN",
+                    {
+                        hour: "numeric",
+                        minute: "2-digit"
+                    }
+                );
+
+
+            // ==================================
+            // CREATE BOOKING CARD
+            // ==================================
+
+            const bookingCard =
+                document.createElement("div");
+
+            bookingCard.className =
+                "booking-card";
+
+
+            bookingCard.innerHTML = `
+
+                <h3>
+                    🌱 ${booking.service}
+                </h3>
+
+                <p>
+                    <strong>Name:</strong>
+                    ${booking.name}
+                </p>
+
+                <p>
+                    <strong>Phone:</strong>
+                    ${booking.phone}
+                </p>
+
+                <p>
+                    <strong>Date:</strong>
+                    ${formattedDate}
+                </p>
+
+                <p>
+                    <strong>Time:</strong>
+                    ${formattedTime}
+                </p>
+
+                <p>
+                    <strong>Address:</strong>
+                    ${booking.address}
+                </p>
+
+                <p>
+                    <strong>Notes:</strong>
+                    ${booking.notes || "No additional notes"}
+                </p>
+
+                <span class="booking-status">
+                    ${booking.status}
+                </span>
+
+                ${
+                    canCancel
+
+                    ?
+
+                    `
+                    <p>
+                        <strong>
+                            Cancellation available until:
+                        </strong>
+                        ${cancellationDeadline.toLocaleTimeString(
+                            "en-IN",
+                            {
+                                hour: "numeric",
+                                minute: "2-digit"
+                            }
+                        )}
+                    </p>
+
+                    <button
+                        class="cancel-booking-btn"
+                        data-id="${booking.id}"
+                    >
+                        Cancel Booking
+                    </button>
+                    `
+
+                    :
+
+                    `
+                    <p>
+                        🔒 Cancellation period has ended.
+                    </p>
+                    `
+                }
+
+            `;
+
+
+            bookingsList.appendChild(bookingCard);
+
+        });
+
+
+        // ==================================
+        // CANCEL BUTTONS
+        // ==================================
+
+        const cancelButtons =
+            document.querySelectorAll(
+                ".cancel-booking-btn"
+            );
+
+
+        cancelButtons.forEach(function (button) {
+
+            button.addEventListener(
+                "click",
+                function () {
+
+                    const bookingId =
+                        Number(button.dataset.id);
+
+
+                    // Get latest bookings
+                    let allBookings =
+                        JSON.parse(
+                            localStorage.getItem(
+                                "gardenerBookings"
+                            )
+                        ) || [];
+
+
+                    const booking =
+                        allBookings.find(function (item) {
+
+                            return item.id === bookingId;
+
+                        });
+
+
+                    if (!booking) {
+
+                        alert("Booking not found.");
+
+                        return;
+
+                    }
+
+
+                    // ==================================
+                    // CHECK 30-MINUTE RULE AGAIN
+                    // ==================================
+
+                    const bookingDateTime =
+                        new Date(
+                            booking.date +
+                            "T" +
+                            booking.time
+                        );
+
+
+                    const cancellationDeadline =
+                        new Date(
+                            bookingDateTime.getTime() -
+                            30 * 60 * 1000
+                        );
+
+
+                    const now = new Date();
+
+
+                    if (now >= cancellationDeadline) {
+
+                        alert(
+                            "Cancellation period has ended. 🔒"
+                        );
+
+                        displayBookings();
+
+                        return;
+
+                    }
+
+
+                    // ==================================
+                    // CONFIRM CANCELLATION
+                    // ==================================
+
+                    const confirmCancel =
+                        confirm(
+                            "Are you sure you want to cancel this booking?"
+                        );
+
+
+                    if (!confirmCancel) {
+
+                        return;
+
+                    }
+
+
+                    // Remove booking
+                    allBookings =
+                        allBookings.filter(function (item) {
+
+                            return item.id !== bookingId;
+
+                        });
+
+
+                    // Save updated bookings
+                    localStorage.setItem(
+                        "gardenerBookings",
+                        JSON.stringify(allBookings)
+                    );
+
+
+                    alert(
+                        "Booking cancelled successfully. 🌿"
+                    );
+
+
+                    // Refresh page content
+                    displayBookings();
+
+                }
+            );
+
+        });
+
+    }
+
+
+    // ==========================================
+    // INITIAL LOAD
+    // ==========================================
+
+    displayBookings();
+
+</script>
+</script>
+</body>
+</html>
+
+   

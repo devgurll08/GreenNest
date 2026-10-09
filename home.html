@@ -1,0 +1,1637 @@
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenNest | Home</title>
+
+    <style>
+        /* =========================================
+   GREENNEST HOME PAGE CSS
+   Scoped styles — product page unaffected
+========================================= */
+
+#gnHomePage {
+    --green: #245b3d;
+    --dark-green: #173d2a;
+    --light-green: #edf5e9;
+    --cream: #fbfaf5;
+    --text: #263b2d;
+    --muted: #718075;
+    --white: #ffffff;
+
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: var(--text);
+    background: var(--cream);
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+#gnHomePage *,
+#gnHomePage *::before,
+#gnHomePage *::after {
+    box-sizing: border-box;
+}
+
+#gnHomePage img {
+    max-width: 100%;
+}
+
+#gnHomePage a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#gnHomePage button,
+#gnHomePage input {
+    font: inherit;
+}
+
+#gnHomePage button {
+    cursor: pointer;
+}
+
+#gnHomePage .gn-container {
+    width: min(1180px, 92%);
+    margin: 0 auto;
+}
+
+/* NAVBAR */
+
+#gnHomePage .gn-navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,.97);
+    box-shadow: 0 3px 18px rgba(25,60,35,.08);
+}
+
+#gnHomePage .gn-nav-inner {
+    min-height: 78px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 22px;
+}
+
+#gnHomePage .gn-logo {
+    font-size: 25px;
+    font-weight: 800;
+    color: var(--green);
+    white-space: nowrap;
+}
+
+#gnHomePage .gn-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+#gnHomePage .gn-nav-links a {
+    font-size: 14px;
+    font-weight: 600;
+    transition: color .25s;
+}
+
+#gnHomePage .gn-nav-links a:hover,
+#gnHomePage .gn-nav-links a.active {
+    color: #58935e;
+}
+
+#gnHomePage .gn-nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+#gnHomePage .gn-icon-btn {
+    position: relative;
+    width: 41px;
+    height: 41px;
+    border: 1px solid #e5ebe2;
+    border-radius: 50%;
+    background: #f8faf6;
+    display: grid;
+    place-items: center;
+    font-size: 18px;
+    transition: .25s;
+}
+
+#gnHomePage .gn-icon-btn:hover {
+    background: var(--light-green);
+    transform: translateY(-2px);
+}
+
+#gnHomePage .gn-count {
+    position: absolute;
+    top: -5px;
+    right: -4px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    border-radius: 20px;
+    background: #d86c4e;
+    color: white;
+    font-size: 10px;
+    line-height: 18px;
+    text-align: center;
+    display: none;
+}
+
+#gnHomePage .gn-profile-wrap {
+    position: relative;
+}
+
+#gnHomePage .gn-profile-panel {
+    display: none;
+    position: absolute;
+    top: 51px;
+    right: 0;
+    width: 270px;
+    padding: 20px;
+    background: white;
+    border: 1px solid #e7ece4;
+    border-radius: 16px;
+    box-shadow: 0 14px 40px rgba(20,50,30,.16);
+    z-index: 200;
+}
+
+#gnHomePage .gn-profile-panel.open {
+    display: block;
+    animation: gnFade .2s ease;
+}
+
+#gnHomePage .gn-profile-panel h3 {
+    color: var(--green);
+    margin: 0 0 10px;
+}
+
+#gnHomePage .gn-profile-panel p {
+    font-size: 12px;
+    color: var(--muted);
+    margin: 7px 0;
+    overflow-wrap: anywhere;
+}
+
+#gnHomePage .gn-profile-panel button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    border: 0;
+    border-radius: 8px;
+    background: var(--light-green);
+    color: var(--dark-green);
+    font-weight: 600;
+}
+
+#gnHomePage .gn-profile-panel .gn-logout {
+    background: #fff0ec;
+    color: #a3402b;
+}
+
+#gnHomePage .gn-mobile-toggle {
+    display: none;
+    border: 0;
+    background: var(--light-green);
+    color: var(--green);
+    border-radius: 9px;
+    padding: 8px 12px;
+    font-size: 20px;
+}
+
+/* HERO */
+
+#gnHomePage .gn-hero {
+    min-height: 510px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(12,43,27,.92) 0%,
+            rgba(20,61,37,.78) 49%,
+            rgba(20,61,37,.18) 100%
+        ),
+        url("images/main.jpg") center/cover no-repeat;
+}
+
+#gnHomePage .gn-hero-content {
+    max-width: 650px;
+    padding: 75px 0;
+    color: white;
+    animation: gnRise .7s ease;
+}
+
+#gnHomePage .gn-eyebrow {
+    display: inline-block;
+    background: rgba(255,255,255,.14);
+    border: 1px solid rgba(255,255,255,.27);
+    padding: 9px 15px;
+    border-radius: 30px;
+    font-size: 12px;
+    letter-spacing: 1.1px;
+    margin-bottom: 23px;
+}
+
+#gnHomePage .gn-hero h1 {
+    font-size: clamp(37px, 5.5vw, 64px);
+    line-height: 1.12;
+    margin: 0 0 22px;
+    letter-spacing: -1.5px;
+}
+
+#gnHomePage .gn-hero h1 span {
+    color: #bde3a8;
+}
+
+#gnHomePage .gn-hero p {
+    max-width: 540px;
+    line-height: 1.8;
+    color: #e3eee2;
+    font-size: 16px;
+    margin: 0 0 30px;
+}
+
+#gnHomePage .gn-hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 13px;
+}
+
+#gnHomePage .gn-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 0;
+    padding: 14px 22px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    transition: transform .25s, background .25s;
+}
+
+#gnHomePage .gn-btn:hover {
+    transform: translateY(-3px);
+}
+
+#gnHomePage .gn-btn-primary {
+    background: #d9edc9;
+    color: #1d4c30;
+}
+
+#gnHomePage .gn-btn-primary:hover {
+    background: white;
+}
+
+#gnHomePage .gn-btn-outline {
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255,255,255,.7);
+}
+
+#gnHomePage .gn-btn:focus-visible,
+#gnHomePage button:focus-visible,
+#gnHomePage a:focus-visible {
+    outline: 3px solid #8dbb78;
+    outline-offset: 3px;
+}
+
+/* BENEFITS */
+
+#gnHomePage .gn-benefits {
+    background: white;
+    border-bottom: 1px solid #e9eee5;
+}
+
+#gnHomePage .gn-benefit-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+    padding: 24px 0;
+}
+
+#gnHomePage .gn-benefit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+#gnHomePage .gn-benefit-icon {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    border-radius: 13px;
+    display: grid;
+    place-items: center;
+    background: var(--light-green);
+    font-size: 22px;
+}
+
+#gnHomePage .gn-benefit strong {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 4px;
+}
+
+#gnHomePage .gn-benefit small {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+/* COMMON SECTIONS */
+
+#gnHomePage .gn-section {
+    padding: 78px 0;
+}
+
+#gnHomePage .gn-section-heading {
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto 38px;
+}
+
+#gnHomePage .gn-section-label {
+    text-transform: uppercase;
+    color: #629369;
+    font-weight: 800;
+    letter-spacing: 1.8px;
+    font-size: 11px;
+    margin: 0 0 12px;
+}
+
+#gnHomePage .gn-section-heading h2,
+#gnHomePage .gn-why-content h2 {
+    font-size: clamp(27px,4vw,39px);
+    line-height: 1.2;
+    color: var(--dark-green);
+    margin: 0 0 13px;
+}
+
+#gnHomePage .gn-section-heading > p:last-child {
+    color: var(--muted);
+    line-height: 1.7;
+    font-size: 14px;
+}
+
+/* CATEGORIES */
+
+#gnHomePage .gn-category-grid {
+    display: grid;
+    grid-template-columns: repeat(3,minmax(0,1fr));
+    gap: 20px;
+}
+
+#gnHomePage .gn-category-card {
+    min-height: 190px;
+    border-radius: 19px;
+    padding: 27px;
+    background: white;
+    border: 1px solid #e8eee4;
+    box-shadow: 0 8px 24px rgba(31,66,38,.04);
+    transition: transform .3s, box-shadow .3s;
+}
+
+#gnHomePage .gn-category-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 32px rgba(31,66,38,.1);
+}
+
+#gnHomePage .gn-category-emoji {
+    font-size: 37px;
+    margin-bottom: 17px;
+}
+
+#gnHomePage .gn-category-card h3 {
+    color: var(--dark-green);
+    margin: 0 0 8px;
+    font-size: 18px;
+}
+
+#gnHomePage .gn-category-card p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.6;
+    margin: 0 0 15px;
+}
+
+#gnHomePage .gn-text-link {
+    color: var(--green);
+    font-weight: 700;
+    font-size: 13px;
+}
+
+#gnHomePage .gn-text-link:hover {
+    color: #6a9b5f;
+}
+
+/* SERVICES */
+
+#gnHomePage .gn-service-grid {
+    display: grid;
+    grid-template-columns: repeat(3,minmax(0,1fr));
+    gap: 22px;
+}
+
+#gnHomePage .gn-service-card {
+    padding: 30px 25px;
+    border-radius: 17px;
+    border: 1px solid #e6ebe2;
+    background: white;
+    transition: transform .3s, box-shadow .3s;
+}
+
+#gnHomePage .gn-service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(31,66,38,.09);
+}
+
+#gnHomePage .gn-service-icon {
+    font-size: 36px;
+    margin-bottom: 17px;
+}
+
+#gnHomePage .gn-service-card h3 {
+    color: var(--dark-green);
+    font-size: 18px;
+    margin: 0 0 10px;
+}
+
+#gnHomePage .gn-service-card p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.8;
+    margin: 0 0 18px;
+}
+
+/* WHY GREENNEST */
+
+#gnHomePage .gn-why {
+    background: #f0f5eb;
+}
+
+#gnHomePage .gn-why-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 55px;
+}
+
+#gnHomePage .gn-why-visual {
+    height: 390px;
+    overflow: hidden;
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(30,60,35,.13);
+}
+
+#gnHomePage .gn-why-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+#gnHomePage .gn-why-content > p:not(.gn-section-label) {
+    color: var(--muted);
+    line-height: 1.9;
+    font-size: 14px;
+    margin: 15px 0 20px;
+}
+
+#gnHomePage .gn-why-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 25px;
+}
+
+#gnHomePage .gn-why-list li {
+    margin: 13px 0;
+    font-size: 14px;
+}
+
+/* TESTIMONIALS */
+
+#gnHomePage .gn-testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(3,minmax(0,1fr));
+    gap: 22px;
+}
+
+#gnHomePage .gn-testimonial-card {
+    padding: 28px;
+    background: white;
+    border: 1px solid #e7ece4;
+    border-radius: 17px;
+    box-shadow: 0 7px 22px rgba(31,66,38,.04);
+}
+
+#gnHomePage .gn-stars {
+    color: #e6ad3e;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+
+#gnHomePage .gn-testimonial-card p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.8;
+    margin: 0 0 18px;
+}
+
+#gnHomePage .gn-testimonial-card h3 {
+    font-size: 14px;
+    color: var(--dark-green);
+}
+
+/* CTA */
+
+#gnHomePage .gn-cta {
+    padding: 65px 20px;
+    text-align: center;
+    color: white;
+    background: linear-gradient(120deg,#173d2a,#36744a);
+}
+
+#gnHomePage .gn-cta .gn-container > p:first-child {
+    color: #cce5bd;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin: 0 0 12px;
+}
+
+#gnHomePage .gn-cta h2 {
+    font-size: clamp(27px,4vw,39px);
+    line-height: 1.25;
+    margin: 0 0 15px;
+}
+
+#gnHomePage .gn-cta .gn-container > p:not(:first-child) {
+    color: #e1ecdf;
+    font-size: 14px;
+    margin: 0 0 25px;
+}
+
+/* FOOTER */
+
+#gnHomePage .gn-footer {
+    background: #122f20;
+    color: #e5eee4;
+    padding-top: 55px;
+}
+
+#gnHomePage .gn-footer-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1fr;
+    gap: 35px;
+    padding-bottom: 38px;
+}
+
+#gnHomePage .gn-footer .gn-logo {
+    display: inline-block;
+    color: #c5e5b8;
+    margin-bottom: 13px;
+}
+
+#gnHomePage .gn-footer-about p {
+    max-width: 290px;
+    font-size: 13px;
+    color: #b8c9b9;
+    line-height: 1.9;
+}
+
+#gnHomePage .gn-footer-grid h3 {
+    font-size: 14px;
+    margin: 4px 0 17px;
+    color: white;
+}
+
+#gnHomePage .gn-footer-grid > div:not(:first-child) a {
+    display: block;
+    width: fit-content;
+    color: #bdcdbd;
+    font-size: 13px;
+    margin: 10px 0;
+    transition: color .2s;
+}
+
+#gnHomePage .gn-footer-grid a:hover {
+    color: #c5e5b8;
+}
+
+#gnHomePage .gn-footer-bottom {
+    text-align: center;
+    padding: 18px;
+    border-top: 1px solid rgba(255,255,255,.12);
+}
+
+#gnHomePage .gn-footer-bottom p {
+    font-size: 12px;
+    color: #b8c9b9;
+}
+
+/* ANIMATIONS */
+
+@keyframes gnRise {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes gnFade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* TABLET */
+
+@media (max-width: 950px) {
+    #gnHomePage .gn-nav-inner {
+        flex-wrap: wrap;
+        padding: 13px 0;
+    }
+
+    #gnHomePage .gn-nav-links {
+        gap: 15px;
+    }
+
+    #gnHomePage .gn-nav-links a {
+        font-size: 12px;
+    }
+
+    #gnHomePage .gn-category-grid,
+    #gnHomePage .gn-product-grid,
+    #gnHomePage .gn-service-grid,
+    #gnHomePage .gn-testimonial-grid {
+        grid-template-columns: repeat(2,minmax(0,1fr));
+    }
+
+    #gnHomePage .gn-why-layout {
+        gap: 30px;
+    }
+
+    #gnHomePage .gn-footer-grid {
+        grid-template-columns: repeat(2,minmax(0,1fr));
+    }
+}
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+    #gnHomePage .gn-container {
+        width: 92%;
+    }
+
+    #gnHomePage .gn-nav-inner {
+        min-height: 70px;
+        gap: 9px;
+    }
+
+    #gnHomePage .gn-logo {
+        font-size: 21px;
+    }
+
+    #gnHomePage .gn-nav-actions {
+        gap: 6px;
+    }
+
+    #gnHomePage .gn-icon-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 15px;
+    }
+
+    #gnHomePage .gn-mobile-toggle {
+        display: block;
+    }
+
+    #gnHomePage .gn-nav-links {
+        display: none;
+        order: 3;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 8px 0;
+    }
+
+    #gnHomePage .gn-nav-links.open {
+        display: flex;
+    }
+
+    #gnHomePage .gn-nav-links a {
+        padding: 12px;
+        border-radius: 8px;
+        font-size: 14px;
+    }
+
+    #gnHomePage .gn-nav-links a:hover {
+        background: var(--light-green);
+    }
+
+    #gnHomePage .gn-profile-panel {
+        position: fixed;
+        top: 75px;
+        right: 4%;
+        width: min(290px,92vw);
+    }
+
+    #gnHomePage .gn-hero {
+        min-height: 470px;
+        background-position: 58% center;
+    }
+
+    #gnHomePage .gn-hero-content {
+        padding: 65px 0;
+    }
+
+    #gnHomePage .gn-hero h1 {
+        font-size: clamp(35px,10vw,48px);
+    }
+
+    #gnHomePage .gn-hero p {
+        font-size: 14px;
+    }
+
+    #gnHomePage .gn-btn {
+        padding: 13px 16px;
+        font-size: 13px;
+    }
+
+    #gnHomePage .gn-benefit-grid {
+        grid-template-columns: 1fr;
+        gap: 17px;
+        padding: 23px 0;
+    }
+
+    #gnHomePage .gn-benefit {
+        justify-content: flex-start;
+    }
+
+    #gnHomePage .gn-section {
+        padding: 55px 0;
+    }
+
+    #gnHomePage .gn-section-heading {
+        margin-bottom: 28px;
+    }
+
+    #gnHomePage .gn-category-grid,
+    #gnHomePage .gn-product-grid,
+    #gnHomePage .gn-service-grid,
+    #gnHomePage .gn-testimonial-grid {
+        grid-template-columns: 1fr;
+    }
+
+    #gnHomePage .gn-category-card {
+        min-height: auto;
+    }
+
+    #gnHomePage .gn-featured-top {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    #gnHomePage .gn-product-image {
+        height: 245px;
+    }
+
+    #gnHomePage .gn-why-layout {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    #gnHomePage .gn-why-visual {
+        height: 270px;
+    }
+
+    #gnHomePage .gn-footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 28px 18px;
+    }
+
+    #gnHomePage .gn-footer-about {
+        grid-column: 1/-1;
+    }
+
+    #gnHomePage .gn-cta {
+        padding: 50px 15px;
+    }
+}
+
+/* VERY SMALL PHONES */
+
+@media (max-width: 370px) {
+    #gnHomePage .gn-logo {
+        font-size: 18px;
+    }
+
+    #gnHomePage .gn-nav-actions {
+        gap: 4px;
+    }
+
+    #gnHomePage .gn-icon-btn {
+        width: 31px;
+        height: 31px;
+        font-size: 13px;
+    }
+
+    #gnHomePage .gn-mobile-toggle {
+        padding: 6px 8px;
+        font-size: 17px;
+    }
+
+    #gnHomePage .gn-hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #gnHomePage .gn-footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    #gnHomePage .gn-footer-about {
+        grid-column: auto;
+    }
+}
+
+/* ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+    #gnHomePage *,
+    #gnHomePage *::before,
+    #gnHomePage *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+    </style>
+</head>
+<body>
+    <div id="gnHomePage">
+<header class="gn-navbar">
+    <div class="gn-container gn-nav-inner">
+
+        <a href="home.html" class="gn-logo">🌿 GreenNest</a>
+
+        <nav class="gn-nav-links" id="gnNavLinks">
+            <a href="home.html" class="active">Home</a>
+            <a href="product.html">Plants</a>
+            <a href="services.html">Services</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+
+        <div class="gn-nav-actions">
+
+            <button type="button" class="gn-icon-btn" id="gnWishlistIcon" aria-label="Wishlist">
+                ♡
+                <span class="gn-count" id="gnWishlistCount">0</span>
+            </button>
+
+            <button type="button" class="gn-icon-btn" id="gnCartIcon" aria-label="Shopping cart">
+                🛒
+                <span class="gn-count" id="gnCartCount">0</span>
+            </button>
+
+            <div class="gn-profile-wrap">
+                <button type="button" class="gn-icon-btn" id="gnProfileIcon" aria-label="My profile">👤</button>
+
+                <div class="gn-profile-panel" id="gnProfilePanel">
+                    <h3>My Account</h3>
+                    <p>Welcome, <span id="gnProfileName">Guest</span></p>
+                    <p id="gnProfileEmail"></p>
+                    <p id="gnProfilePhone"></p>
+
+                    <button type="button" id="gnProfileCartBtn">My Cart</button>
+                    <button type="button" id="gnProfileWishlistBtn">My Wishlist</button>
+                    <button type="button" id="gnProfileOrderBtn">My Orders</button>
+                    <button type="button" id="gnProfileBookingBtn">My Gardener Bookings</button>
+                    <button type="button" id="gnLogoutBtn" class="gn-logout">Logout</button>
+                </div>
+            </div>
+
+            <button type="button" class="gn-mobile-toggle" id="gnMobileToggle" aria-label="Open navigation">☰</button>
+
+        </div>
+    </div>
+
+</header>
+
+
+<!-- HERO SECTION -->
+<main>
+
+    <section class="gn-hero">
+        <div class="gn-container">
+            <div class="gn-hero-content">
+
+                <span class="gn-eyebrow">YOUR LITTLE GREEN CORNER</span>
+
+                <h1>Bring Nature <span>Into Your Home</span> 🌿</h1>
+
+                <p>
+                    Discover beautiful plants, gardening essentials
+                    and expert gardening services — all in one place.
+                </p>
+
+                <div class="gn-hero-buttons">
+                    <a href="product.html" class="gn-btn gn-btn-primary">Explore Plants →</a>
+                    <a href="gardener-booking.html" class="gn-btn gn-btn-outline">Book a Gardener</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- BENEFITS -->
+    <section class="gn-benefits">
+        <div class="gn-container gn-benefit-grid">
+
+            <div class="gn-benefit">
+                <div class="gn-benefit-icon">🌱</div>
+                <div>
+                    <strong>Healthy Plants</strong>
+                    <small>Carefully selected greenery</small>
+                </div>
+            </div>
+
+            <div class="gn-benefit">
+                <div class="gn-benefit-icon">🚚</div>
+                <div>
+                    <strong>Easy Shopping</strong>
+                    <small>A simple shopping experience</small>
+                </div>
+            </div>
+
+            <div class="gn-benefit">
+                <div class="gn-benefit-icon">🧑‍🌾</div>
+                <div>
+                    <strong>Expert Gardeners</strong>
+                    <small>Help for your garden</small>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- CATEGORIES -->
+    <section class="gn-section gn-categories">
+        <div class="gn-container">
+
+            <div class="gn-section-heading">
+                <p class="gn-section-label">FIND YOUR GREEN</p>
+                <h2>Explore Plant Categories</h2>
+                <p>Find the perfect plants to bring life and freshness into your space.</p>
+            </div>
+
+            <div class="gn-category-grid">
+
+                <article class="gn-category-card">
+                    <div class="gn-category-emoji">🪴</div>
+                    <h3>Indoor Plants</h3>
+                    <p>Make your living spaces feel fresh and green.</p>
+                    <a href="product.html" class="gn-text-link">Explore Plants →</a>
+                </article>
+
+                <article class="gn-category-card">
+                    <div class="gn-category-emoji">🌺</div>
+                    <h3>Flowering Plants</h3>
+                    <p>Add beautiful colours and blooms to your home.</p>
+                    <a href="product.html" class="gn-text-link">Explore Flowers →</a>
+                </article>
+
+                <article class="gn-category-card">
+                    <div class="gn-category-emoji">🌳</div>
+                    <h3>Outdoor Plants</h3>
+                    <p>Bring your balcony, terrace or garden to life.</p>
+                    <a href="product.html" class="gn-text-link">Explore Outdoors →</a>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- GARDENING SERVICES -->
+    <section class="gn-section gn-services">
+        <div class="gn-container">
+
+            <div class="gn-section-heading">
+                <p class="gn-section-label">GROW WITH EXPERT HELP</p>
+                <h2>Gardening Services</h2>
+                <p>Get help with plant care and create a garden you love.</p>
+            </div>
+
+            <div class="gn-service-grid">
+
+                <article class="gn-service-card">
+                    <div class="gn-service-icon">🧑‍🌾</div>
+                    <h3>Gardener Booking</h3>
+                    <p>Connect with a gardener for your gardening needs.</p>
+                    <a href="services.html" class="gn-text-link">Book a Gardener →</a>
+                </article>
+
+                <article class="gn-service-card">
+                    <div class="gn-service-icon">🌿</div>
+                    <h3>Plant Care Guidance</h3>
+                    <p>Get guidance to help your plants grow well.</p>
+                    <a href="services.html" class="gn-text-link">Explore Services →</a>
+                </article>
+
+                <article class="gn-service-card">
+                    <div class="gn-service-icon">🌼</div>
+                    <h3>Garden Maintenance</h3>
+                    <p>Find support for keeping your garden neat and healthy.</p>
+                    <a href="services.html" class="gn-text-link">Learn More →</a>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- WHY GREENNEST -->
+    <section class="gn-section gn-why">
+        <div class="gn-container gn-why-layout">
+
+            <div class="gn-why-visual">
+                <img src="images/main.jpg" alt="Green plants and gardening">
+            </div>
+
+            <div class="gn-why-content">
+                <p class="gn-section-label">WHY GREENNEST?</p>
+                <h2>A Little More Green, A Little More Happiness</h2>
+
+                <p>
+                    GreenNest brings plants and gardening services together
+                    to make your gardening journey easier.
+                </p>
+
+                <ul class="gn-why-list">
+                    <li>🌱 A variety of indoor and outdoor plants</li>
+                    <li>🛒 Convenient plant shopping</li>
+                    <li>💚 Personal wishlist and shopping cart</li>
+                    <li>🧑‍🌾 Gardening service booking</li>
+                </ul>
+
+                <a href="about.html" class="gn-btn gn-btn-primary">Discover GreenNest →</a>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- TESTIMONIALS -->
+    <section class="gn-section gn-testimonials">
+        <div class="gn-container">
+
+            <div class="gn-section-heading">
+                <p class="gn-section-label">KIND WORDS</p>
+                <h2>Growing Happiness Together</h2>
+                <p>A welcoming space for everyone who loves plants.</p>
+            </div>
+
+            <div class="gn-testimonial-grid">
+
+                <article class="gn-testimonial-card">
+                    <div class="gn-stars">★★★★★</div>
+                    <p>"A lovely place to explore plants for my home."</p>
+                    <h3>Plant Lover</h3>
+                </article>
+
+                <article class="gn-testimonial-card">
+                    <div class="gn-stars">★★★★★</div>
+                    <p>"The website makes discovering new plants simple."</p>
+                    <h3>Garden Enthusiast</h3>
+                </article>
+
+                <article class="gn-testimonial-card">
+                    <div class="gn-stars">★★★★★</div>
+                    <p>"I love having plants and gardening services together."</p>
+                    <h3>GreenNest Customer</h3>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- CALL TO ACTION -->
+    <section class="gn-cta">
+        <div class="gn-container">
+            <p>YOUR GREEN JOURNEY STARTS HERE</p>
+            <h2>Ready to Grow Something Beautiful?</h2>
+            <p>Explore our plants and bring a little nature into your everyday life.</p>
+            <a href="product.html" class="gn-btn gn-btn-primary">Start Exploring 🌱</a>
+        </div>
+    </section>
+
+</main>
+
+
+<!-- FOOTER -->
+<footer class="gn-footer">
+    <div class="gn-container gn-footer-grid">
+
+        <div class="gn-footer-about">
+            <a href="home.html" class="gn-logo">🌿 GreenNest</a>
+            <p>Bring nature closer to your home with beautiful plants and gardening services.</p>
+        </div>
+
+        <div>
+            <h3>Quick Links</h3>
+            <a href="home.html">Home</a>
+            <a href="product.html">Plants</a>
+            <a href="services.html">Services</a>
+        </div>
+
+        <div>
+            <h3>Information</h3>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+
+        <div>
+            <h3>My Account</h3>
+            <a href="cart.html">My Cart</a>
+            <a href="wishlist.html">My Wishlist</a>
+            <a href="login.html" id="gnFooterAccountLink">Login</a>
+        </div>
+
+    </div>
+
+    <div class="gn-footer-bottom">
+        <p>© 2026 GreenNest. Grow with nature. Live with GreenNest. 💚</p>
+    </div>
+</footer>
+
+</div>
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+
+    // =====================================
+    // 2. SELECT HTML ELEMENTS
+    // =====================================
+
+    const root = document.getElementById("gnHomePage");
+
+    if (!root) return;
+;
+
+    const wishlistIcon =
+        root.querySelector("#gnWishlistIcon");
+
+    const cartIcon =
+        root.querySelector("#gnCartIcon");
+
+    const wishlistCount =
+        root.querySelector("#gnWishlistCount");
+
+    const cartCount =
+        root.querySelector("#gnCartCount");
+
+    const profileIcon =
+        root.querySelector("#gnProfileIcon");
+
+    const profilePanel =
+        root.querySelector("#gnProfilePanel");
+
+    const mobileToggle =
+        root.querySelector("#gnMobileToggle");
+
+    const navLinks =
+        root.querySelector("#gnNavLinks");
+
+
+    // =====================================
+    // 3. SAFE LOCALSTORAGE HELPERS
+    // =====================================
+
+    function readStorage(key, fallback) {
+        try {
+            const value = localStorage.getItem(key);
+
+            return value === null
+                ? fallback
+                : JSON.parse(value);
+
+        } catch (error) {
+            console.error("Storage read error:", key, error);
+            return fallback;
+        }
+    }
+
+    function getCurrentUser() {
+        const user = readStorage("currentUser", null);
+
+        if (
+            !user ||
+            typeof user.email !== "string" ||
+            !user.email.trim()
+        ) {
+            return null;
+        }
+
+        return user;
+    }
+
+    function getUserKey(prefix) {
+        const user = getCurrentUser();
+
+        if (!user) return null;
+
+        return prefix + user.email.trim().toLowerCase();
+    }
+
+    function getCart() {
+        const key = getUserKey("cart_");
+
+        if (!key) return [];
+
+        const cart = readStorage(key, []);
+
+        return Array.isArray(cart) ? cart : [];
+    }
+
+    function saveCart(cart) {
+        const key = getUserKey("cart_");
+
+        if (!key) return false;
+
+        try {
+            localStorage.setItem(key, JSON.stringify(cart));
+            return true;
+        } catch (error) {
+            alert("Cart save nahi ho paya. Storage space check karo.");
+            return false;
+        }
+    }
+
+    function getWishlist() {
+        const key = getUserKey("wishlist_");
+
+        if (!key) return [];
+
+        const wishlist = readStorage(key, []);
+
+        return Array.isArray(wishlist) ? wishlist : [];
+    }
+
+    function saveWishlist(wishlist) {
+        const key = getUserKey("wishlist_");
+
+        if (!key) return false;
+
+        try {
+            localStorage.setItem(key, JSON.stringify(wishlist));
+            return true;
+        } catch (error) {
+            alert("Wishlist save nahi ho payi. Storage check karo.");
+            return false;
+        }
+    }
+
+
+    // =====================================
+    // 4. LOGIN CHECK
+    // =====================================
+
+    function requireLogin() {
+        if (getCurrentUser()) {
+            return true;
+        }
+
+        alert("Please login first to continue. 🌿");
+
+        window.location.href = "login.html";
+
+        return false;
+    }
+
+
+    // =====================================
+    // 5. UPDATE CART AND WISHLIST COUNTS
+    // =====================================
+
+    function updateCounts() {
+        if (!getCurrentUser()) {
+            if (cartCount) cartCount.style.display = "none";
+            if (wishlistCount) wishlistCount.style.display = "none";
+            return;
+        }
+
+        const cart = getCart();
+
+        const totalQuantity = cart.reduce(function (total, item) {
+            return total + Math.max(0, Number(item.quantity) || 0);
+        }, 0);
+
+        if (cartCount) {
+            cartCount.textContent = totalQuantity;
+            cartCount.style.display =
+                totalQuantity > 0 ? "inline-block" : "none";
+        }
+
+        const wishlist = getWishlist();
+
+        if (wishlistCount) {
+            wishlistCount.textContent = wishlist.length;
+            wishlistCount.style.display =
+                wishlist.length > 0 ? "inline-block" : "none";
+        }
+    }
+
+
+    // =====================================
+    // 6. UPDATE PROFILE DETAILS
+    // =====================================
+
+    function updateProfile() {
+        const user = getCurrentUser();
+
+        const name =
+            root.querySelector("#gnProfileName");
+
+        const email =
+            root.querySelector("#gnProfileEmail");
+
+        const phone =
+            root.querySelector("#gnProfilePhone");
+
+        const footerAccount =
+            root.querySelector("#gnFooterAccountLink");
+
+        if (name) {
+            name.textContent = user ? user.name || "Customer" : "Guest";
+        }
+
+        if (email) {
+            email.textContent = user ? user.email : "Please login to your account";
+        }
+
+        if (phone) {
+            phone.textContent = user ? user.phone || "" : "";
+        }
+
+        if (footerAccount) {
+            footerAccount.textContent = user ? "My Profile" : "Login";
+            footerAccount.href = user ? "user-profile.html" : "login.html";
+        }
+
+        // Hide account-only buttons when logged out.
+        [
+            "#gnProfileCartBtn",
+            "#gnProfileWishlistBtn",
+            "#gnProfileOrderBtn",
+            "#gnProfileBookingBtn",
+            "#gnLogoutBtn"
+        ].forEach(function (selector) {
+            const button = root.querySelector(selector);
+
+            if (button) {
+                button.style.display = user ? "block" : "none";
+            }
+        });
+    }
+
+
+    // =====================================
+    // 7. DISPLAY FEATURED PLANTS
+    // =====================================
+
+    function displayProducts(list) {
+        if (!productContainer) return;
+
+        productContainer.innerHTML = "";
+
+        if (list.length === 0) {
+            productContainer.innerHTML =
+                '<p class="gn-no-results">No plants found. Try another search! 🌿</p>';
+            return;
+        }
+
+        const wishlist = getWishlist();
+
+        list.forEach(function (product) {
+            const isWishlisted = wishlist.some(function (item) {
+                return Number(item.id) === product.id;
+            });
+
+            const card = document.createElement("article");
+
+            card.className = "gn-product-card";
+
+            const imageWrapper = document.createElement("div");
+            imageWrapper.className = "gn-product-image";
+
+            const image = document.createElement("img");
+            image.src = product.image;
+            image.alt = product.name;
+            image.loading = "lazy";
+
+            image.addEventListener("error", function () {
+                image.alt = product.name + " image unavailable";
+            });
+
+            const stock = document.createElement("span");
+
+            stock.className = product.availability === "in-stock"
+                ? "gn-stock"
+                : "gn-stock out";
+
+            stock.textContent = product.availability === "in-stock"
+                ? "In Stock"
+                : "Out of Stock";
+
+            const wishButton = document.createElement("button");
+
+            wishButton.type = "button";
+            wishButton.className = "gn-wish-btn";
+            wishButton.dataset.productId = product.id;
+            wishButton.textContent = isWishlisted ? "♥" : "♡";
+            wishButton.setAttribute(
+                "aria-label",
+                (isWishlisted ? "Remove " : "Add ") +
+                product.name + " " +
+                (isWishlisted ? "from" : "to") + " wishlist"
+            );
+
+            imageWrapper.append(image, stock, wishButton);
+
+            const info = document.createElement("div");
+            info.className = "gn-product-info";
+
+            const category = document.createElement("p");
+            category.className = "gn-category-name";
+            category.textContent = product.category;
+
+            const title = document.createElement("h3");
+            title.textContent = product.name;
+
+            const meta = document.createElement("div");
+            meta.className = "gn-product-meta";
+
+            const price = document.createElement("span");
+            price.className = "gn-price";
+            price.textContent = "₹" + product.price;
+
+            const rating = document.createElement("span");
+            rating.className = "gn-rating";
+            rating.textContent = "⭐ " + product.rating;
+
+            meta.append(price, rating);
+
+            const addButton = document.createElement("button");
+
+            addButton.type = "button";
+            addButton.className = "gn-add-cart";
+            addButton.dataset.productId = product.id;
+
+            if (product.availability === "in-stock") {
+                addButton.textContent = "Add to Cart 🛒";
+            } else {
+                addButton.textContent = "Out of Stock";
+                addButton.disabled = true;
+            }
+
+            info.append(category, title, meta, addButton);
+            card.append(imageWrapper, info);
+
+            productContainer.appendChild(card);
+        });
+    }
+
+
+    // =====================================
+    // 10. PROFILE DROPDOWN
+    // =====================================
+
+    if (profileIcon && profilePanel) {
+        profileIcon.addEventListener("click", function (event) {
+            event.stopPropagation();
+
+            const isOpen = profilePanel.classList.toggle("open");
+
+            profileIcon.setAttribute("aria-expanded", String(isOpen));
+        });
+
+        profilePanel.addEventListener("click", function (event) {
+            event.stopPropagation();
+        });
+
+        document.addEventListener("click", function () {
+            profilePanel.classList.remove("open");
+            profileIcon.setAttribute("aria-expanded", "false");
+        });
+    }
+
+
+    // =====================================
+    // 11. CART AND WISHLIST NAVIGATION
+    // =====================================
+
+    if (cartIcon) {
+        cartIcon.addEventListener("click", function () {
+            if (requireLogin()) {
+                window.location.href = "cart.html";
+            }
+        });
+    }
+
+    if (wishlistIcon) {
+        wishlistIcon.addEventListener("click", function () {
+            if (requireLogin()) {
+                window.location.href = "wishlist.html";
+            }
+        });
+    }
+
+    const navigationButtons = [
+        ["#gnProfileCartBtn", "cart.html"],
+        ["#gnProfileWishlistBtn", "wishlist.html"],
+        ["#gnProfileOrderBtn", "order.html"],
+        ["#gnProfileBookingBtn", "ebooking.html"]
+    ];
+
+    navigationButtons.forEach(function (entry) {
+        const button = root.querySelector(entry[0]);
+
+        if (button) {
+            button.addEventListener("click", function () {
+                if (requireLogin()) {
+                    window.location.href = entry[1];
+                }
+            });
+        }
+    });
+
+
+    // =====================================
+    // 12. LOGOUT
+    // =====================================
+
+    const logoutButton = root.querySelector("#gnLogoutBtn");
+
+    if (logoutButton) {
+        logoutButton.addEventListener("click", function () {
+            if (!getCurrentUser()) {
+                window.location.href = "login.html";
+                return;
+            }
+
+            localStorage.removeItem("currentUser");
+
+            alert("You have been logged out successfully. 🌿");
+
+            window.location.href = "login.html";
+        });
+    }
+
+
+    // =====================================
+    // 13. MOBILE NAVIGATION
+    // =====================================
+
+    if (mobileToggle && navLinks) {
+        mobileToggle.addEventListener("click", function () {
+            const isOpen = navLinks.classList.toggle("open");
+
+            mobileToggle.setAttribute("aria-expanded", String(isOpen));
+            mobileToggle.textContent = isOpen ? "✕" : "☰";
+        });
+
+        navLinks.querySelectorAll("a").forEach(function (link) {
+            link.addEventListener("click", function () {
+                navLinks.classList.remove("open");
+                mobileToggle.setAttribute("aria-expanded", "false");
+                mobileToggle.textContent = "☰";
+            });
+        });
+    }
+
+
+    // =====================================
+    // 14. INITIALIZE HOME PAGE
+    // =====================================
+
+    updateProfile();
+    updateCounts();
+
+});
+</script>
+</body>
+</html>

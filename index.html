@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Welcome to GreenNest 🌿</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(8, 43, 29, 0.88),
+                    rgba(29, 79, 51, 0.58),
+                    rgba(8, 43, 29, 0.82)
+                ),
+                url("images/main.jpg");
+
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 24px;
+        }
+
+        .welcome-card {
+            width: 100%;
+            max-width: 540px;
+            padding: 48px 35px;
+            text-align: center;
+
+            background: rgba(255, 255, 245, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 28px;
+
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25);
+
+            animation: appear 0.8s ease;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 700;
+            color: #245b38;
+            letter-spacing: 1px;
+            margin-bottom: 28px;
+        }
+
+        .leaf {
+            font-size: 55px;
+            margin-bottom: 15px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        h1 {
+            font-size: clamp(30px, 6vw, 43px);
+            color: #204b31;
+            line-height: 1.2;
+            margin-bottom: 18px;
+        }
+
+        h1 span {
+            color: #57935e;
+        }
+
+        .tagline {
+            font-size: 16px;
+            color: #586b5b;
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .instruction {
+            font-size: 14px;
+            color: #68776a;
+            margin-bottom: 28px;
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 15px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            transition: 0.3s ease;
+        }
+
+        .login-btn {
+            background: #285b39;
+            color: white;
+            border: 2px solid #285b39;
+        }
+
+        .signup-btn {
+            background: transparent;
+            color: #285b39;
+            border: 2px solid #285b39;
+        }
+
+        .login-btn:hover {
+            background: #194329;
+            border-color: #194329;
+            transform: translateY(-3px);
+        }
+
+        .signup-btn:hover {
+            background: #e5f0e4;
+            transform: translateY(-3px);
+        }
+
+        .footer-text {
+            margin-top: 28px;
+            color: #758175;
+            font-size: 12px;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .welcome-card {
+                padding: 38px 23px;
+                border-radius: 22px;
+            }
+
+            .logo {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="welcome-card">
+
+        <div class="logo">🌿 GreenNest</div>
+
+        <div class="leaf">🍃</div>
+
+        <h1>
+            Welcome to <span>GreenNest</span>
+        </h1>
+
+        <p class="tagline">
+            Bring nature closer to your home.
+            Discover beautiful plants and expert gardening services.
+        </p>
+
+        <p class="instruction">
+            To move forward, please log in or create an account.
+        </p>
+
+        <div class="buttons">
+
+            <a href="login.html" class="btn login-btn">
+                Login →
+            </a>
+
+            <a href="signup.html" class="btn signup-btn">
+                Create Account 🌱
+            </a>
+
+        </div>
+
+        <p class="footer-text">
+            Grow with nature. Live with GreenNest. 💚
+        </p>
+
+    </main>
+
+</body>
+</html>

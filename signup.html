@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup - GreenNest</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            color: #090909;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .signup-section {
+            background-image: url("images/signup.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .signup-container {
+            width: 100%;
+            max-width: 480px;
+            background-image: url("images/background.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 40px;
+            border-radius: 22px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+            animation: signupAppear 0.7s ease;
+        }
+
+        .signup-container h1 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .signup-container > p {
+            text-align: center;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .signup-container form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .signup-container label {
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .signup-container input[type="text"],
+        .signup-container input[type="email"],
+        .signup-container input[type="tel"],
+        .signup-container input[type="password"] {
+            width: 100%;
+            padding: 13px 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            outline: none;
+            margin-bottom: 20px;
+            transition: 0.3s ease;
+        }
+
+        .signup-container input:focus {
+            border-color: #4caf50;
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.12);
+            transform: translateY(-1px);
+        }
+
+        .signup-container .terms {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: normal;
+            margin: 5px 0 25px;
+        }
+
+        .signup-container .terms input {
+            margin: 0;
+        }
+
+        .signup-btn {
+            width: 100%;
+            padding: 13px;
+            background-color: #285c36;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .signup-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+        }
+
+        .login-link {
+            margin-top: 25px;
+            text-align: center;
+        }
+
+        .login-link a {
+            text-decoration: none;
+            font-weight: 600;
+            color: #285c36;
+        }
+
+        @keyframes signupAppear {
+            from {
+                opacity: 0;
+                transform: translateY(35px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .signup-container {
+                padding: 28px 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <section class="signup-section">
+            <div class="signup-container">
+
+                <h1>Create Account</h1>
+                <p>Join GreenNest and start your green journey.</p>
+
+                <form id="signupForm">
+                    <label for="signupName">Full Name</label>
+                    <input
+                        type="text"
+                        id="signupName"
+                        placeholder="Enter your Full Name"
+                        autocomplete="name"
+                        required
+                    >
+
+                    <label for="signupEmail">Email</label>
+                    <input
+                        type="email"
+                        id="signupEmail"
+                        placeholder="Enter your Email"
+                        autocomplete="email"
+                        required
+                    >
+
+                    <label for="signupPhone">Phone Number</label>
+                    <input
+                        type="tel"
+                        id="signupPhone"
+                        placeholder="Enter your 10-digit Phone Number"
+                        autocomplete="tel"
+                        inputmode="numeric"
+                        maxlength="10"
+                        required
+                    >
+
+                    <label for="signupPassword">Password</label>
+                    <input
+                        type="password"
+                        id="signupPassword"
+                        placeholder="Create a password"
+                        autocomplete="new-password"
+                        required
+                    >
+
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        placeholder="Confirm your password"
+                        autocomplete="new-password"
+                        required
+                    >
+
+                    <label class="terms" for="terms">
+                        <input type="checkbox" id="terms" required>
+                        I agree to the terms and conditions
+                    </label>
+
+                    <button type="submit" class="signup-btn">
+                        Create Account
+                    </button>
+                </form>
+
+                <p class="login-link">
+                    Already Have An Account?
+                    <a href="login.html">Login</a>
+                </p>
+
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // ==========================================
+        // GREENNEST - SIGNUP
+        // ==========================================
+
+        const signupForm = document.getElementById("signupForm");
+
+        signupForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            // Get input values
+            const name = document.getElementById("signupName")
+                .value.trim();
+
+            const email = document.getElementById("signupEmail")
+                .value.trim().toLowerCase();
+
+            const phone = document.getElementById("signupPhone")
+                .value.trim();
+
+            const password = document.getElementById("signupPassword")
+                .value;
+
+            const confirmPassword =
+                document.getElementById("confirmPassword").value;
+
+            const terms = document.getElementById("terms").checked;
+
+            // Validate all fields
+            if (!name || !email || !phone || !password || !confirmPassword) {
+                alert("Please fill all the fields.");
+                return;
+            }
+
+            // Validate email
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!emailPattern.test(email)) {
+                alert("Please enter a valid email address.");
+                return;
+            }
+
+            // Validate phone number
+            const phonePattern = /^[0-9]{10}$/;
+
+            if (!phonePattern.test(phone)) {
+                alert("Please enter a valid 10-digit phone number.");
+                return;
+            }
+
+            // Validate password
+            if (password !== confirmPassword) {
+                alert("Passwords do not match.");
+                return;
+            }
+
+            if (password.length < 6) {
+                alert("Password must be at least 6 characters long.");
+                return;
+            }
+
+            if (!terms) {
+                alert("Please agree to the Terms & Conditions.");
+                return;
+            }
+
+            // Get existing registered users
+            let users = [];
+
+            try {
+                const savedUsers = localStorage.getItem("users");
+                users = savedUsers ? JSON.parse(savedUsers) : [];
+
+                if (!Array.isArray(users)) {
+                    alert("Unable to read saved accounts. Please check your browser storage.");
+                    return;
+                }
+            } catch (error) {
+                alert("Unable to read saved accounts. Please check your browser storage.");
+                return;
+            }
+
+            // Check for an existing account
+            const existingUser = users.find(function (user) {
+                return user.email &&
+                    user.email.toLowerCase() === email;
+            });
+
+            if (existingUser) {
+                alert("An account with this email already exists. Please log in.");
+                return;
+            }
+
+            // Create the new account
+            const newUser = {
+                name: name,
+                email: email,
+                phone: phone,
+                password: password
+            };
+
+            // Save account and start the session
+            try {
+                users.push(newUser);
+
+                localStorage.setItem("users", JSON.stringify(users));
+
+                localStorage.setItem(
+                    "currentUser",
+                    JSON.stringify(newUser)
+                );
+            } catch (error) {
+                // Roll back the in-memory addition if saving fails
+                users.pop();
+                alert("Account could not be saved. Please check available browser storage.");
+                return;
+            }
+
+            alert("Account created successfully! Welcome to GreenNest 🌿");
+
+            // Go directly to the homepage
+            window.location.href = "home.html";
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gardener Boking here</title>
+    <style>
+        /* =========================
+   GARDENER BOOKING PAGE
+========================= */
+
+body{
+    background-image: url("images/book.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.booking-section {
+    min-height: 75vh;
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.booking-container {
+    width: 100%;
+    max-width: 650px;
+    background: white;
+    padding: 40px;
+    border-radius: 22px;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.10);
+    animation: bookingAppear 0.7s ease;
+}
+
+.booking-container h1 {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 32px;
+}
+
+.booking-container > p {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+
+/* =========================
+   FORM
+========================= */
+
+.booking-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.booking-container label {
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.booking-container input,
+.booking-container select,
+.booking-container textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    outline: none;
+    margin-bottom: 20px;
+    font-family: inherit;
+    font-size: 15px;
+    transition: 0.3s ease;
+}
+
+
+/* =========================
+   FOCUS EFFECT
+========================= */
+
+.booking-container input:focus,
+.booking-container select:focus,
+.booking-container textarea:focus {
+    border-color: #4caf50;
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.12);
+    transform: translateY(-1px);
+}
+
+
+/* =========================
+   TEXTAREA
+========================= */
+
+.booking-container textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+
+/* =========================
+   BOOKING BUTTON
+========================= */
+
+.booking-btn {
+    width: 100%;
+    padding: 14px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.booking-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes bookingAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(35px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 600px) {
+
+    .booking-section {
+        padding: 45px 20px;
+    }
+
+    .booking-container {
+        padding: 28px 22px;
+    }
+
+    .booking-container h1 {
+        font-size: 27px;
+    }
+}
+    </style>
+</head>
+<body>
+
+           <main>
+
+    <section class="booking-section">
+
+        <div class="booking-container">
+
+            <h1>Book a Gardener 🌱</h1>
+
+            <p>
+                Get expert gardening help at your doorstep.
+            </p>
+
+
+            <form>
+
+                <label for="gardenerName">
+                    Full Name
+                </label>
+
+                <input
+                    type="text"
+                    id="gardenerName"
+                    placeholder="Enter your name"
+                >
+
+
+                <label for="gardenerPhone">
+                    Phone Number
+                </label>
+
+                <input
+                    type="tel"
+                    id="gardenerPhone"
+                    placeholder="Enter phone number"
+                >
+
+
+                <label for="service">
+                    Select Service
+                </label>
+
+                <select id="service">
+
+                    <option value="">
+                        Choose a service
+                    </option>
+
+                    <option value="plant-care">
+                        Plant Care
+                    </option>
+
+                    <option value="garden-maintenance">
+                        Garden Maintenance
+                    </option>
+
+                    <option value="planting">
+                        Planting & Repotting
+                    </option>
+
+                    <option value="lawn-care">
+                        Lawn Care
+                    </option>
+
+                </select>
+
+
+                <label for="bookingDate">
+                    Preferred Date
+                </label>
+
+                <input
+                    type="date"
+                    id="bookingDate"
+                >
+
+
+                <label for="bookingTime">
+                    Preferred Time
+                </label>
+
+                <input
+                    type="time"
+                    id="bookingTime"
+                >
+
+
+                <label for="gardenerAddress">
+                    Address
+                </label>
+
+                <textarea
+                    id="gardenerAddress"
+                    placeholder="Enter your address"
+                ></textarea>
+
+
+                <label for="bookingNotes">
+                    Additional Notes
+                </label>
+
+                <textarea
+                    id="bookingNotes"
+                    placeholder="Tell us anything else..."
+                ></textarea>
+
+
+                <button
+                    type="button"
+                    class="booking-btn">
+                    Book a Gardener
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+</main>
+
+<script>
+    //fill logged-in user's details
+    //------------------------------
+
+    const currentUser = 
+    JSON.parse(localStorage.getItem("currentUser"));
+    if(currentUser){
+        gardenerName.value = currentUser.name;
+        gardenerPhone.value = currentUser.phone;
+    }
+
+    const bookingButton = document.querySelector(".booking-btn");
+
+bookingButton.addEventListener("click", function () {
+
+    const service = document.getElementById("service").value;
+    const bookingDate = document.getElementById("bookingDate").value;
+    const bookingTime = document.getElementById("bookingTime").value;
+    const address = document.getElementById("gardenerAddress").value.trim();
+    const notes = document.getElementById("bookingNotes").value.trim();
+
+    // Check required fields
+    if (
+        service === "" ||
+        bookingDate === "" ||
+        bookingTime === "" ||
+        address === ""
+    ) {
+        alert("Please fill all required booking details.");
+        return;
+    }
+
+    // Get existing bookings
+    let bookings =
+        JSON.parse(localStorage.getItem("gardenerBookings")) || [];
+
+    // Create new booking
+    const newBooking = {
+
+        id: Date.now(),
+
+        userEmail: currentUser.email,
+
+        name: currentUser.name,
+
+        phone: currentUser.phone,
+
+        service: service,
+
+        date: bookingDate,
+
+        time: bookingTime,
+
+        address: address,
+
+        notes: notes,
+
+        status: "Confirmed"
+
+    };
+
+    // Save booking
+    bookings.push(newBooking);
+
+    localStorage.setItem(
+        "gardenerBookings",
+        JSON.stringify(bookings)
+    );
+
+    alert("Gardener booked successfully! 🌱");
+
+});
+</script>
+</body>
+</html>

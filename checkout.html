@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout page</title>
+
+    <style>
+
+        /* =========================
+   CHECKOUT PAGE
+========================= */
+
+.checkout-section {
+    padding: 60px 7%;
+    min-height: 75vh;
+    background-image: url("images/bougainvellia.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.checkout-section > h1 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 40px;
+}
+
+
+/* =========================
+   CHECKOUT LAYOUT
+========================= */
+
+.checkout-container {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 30px;
+    max-width: 1100px;
+    margin: auto;
+    align-items: start;
+}
+
+
+/* =========================
+   CUSTOMER DETAILS
+========================= */
+
+.customer-details {
+    background: white;
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    animation: checkoutLeft 0.7s ease;
+}
+
+.customer-details h2 {
+    margin-bottom: 25px;
+}
+
+.customer-details label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.customer-details input,
+.customer-details textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    outline: none;
+    font-family: inherit;
+    transition: 0.3s ease;
+}
+
+.customer-details input:focus,
+.customer-details textarea:focus {
+    border-color: #4caf50;
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.12);
+}
+
+.customer-details textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+
+/* =========================
+   ORDER SUMMARY
+========================= */
+
+.checkout-Summary {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    animation: checkoutRight 0.7s ease;
+}
+
+.checkout-Summary h2 {
+    margin-bottom: 25px;
+}
+
+
+/* Product */
+
+.checkout-product {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 18px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid #eee;
+    font-weight: 600;
+}
+
+
+/* Subtotal + Delivery */
+
+.checkout-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0;
+}
+
+
+/* Total */
+
+.checkout-total {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0 30px;
+    font-size: 20px;
+}
+
+
+/* =========================
+   PAYMENT METHOD
+========================= */
+
+.checkout-Summary h3 {
+    margin-bottom: 15px;
+}
+
+.checkout-Summary label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 12px 0;
+    cursor: pointer;
+}
+
+.checkout-Summary input[type="radio"] {
+    cursor: pointer;
+}
+
+
+/* =========================
+   PLACE ORDER
+========================= */
+
+.place-order-btn {
+    width: 100%;
+    padding: 14px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.place-order-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes checkoutLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes checkoutRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 800px) {
+
+    .checkout-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 550px) {
+
+    .checkout-section {
+        padding: 45px 20px;
+    }
+
+    .checkout-section > h1 {
+        font-size: 30px;
+    }
+
+    .customer-details,
+    .checkout-Summary {
+        padding: 25px;
+    }
+}
+    </style>
+</head>
+<body>
+
+        <main>
+            <section class="checkout-section">
+
+                <h1>Checkout</h1>
+
+                <div class="checkout-container">
+                    <!--Customer details-->
+                    <div class="customer-details">
+                        <h2>customer Details</h2>
+
+                        <label for="name">Full Name </label>
+                        <input type="text" id="name" placeholder="Enter Your Name">
+
+                         <label for="email">E-mail </label>
+                        <input type="text" id="email" placeholder="Enter Your E-mail">
+
+                         <label for="phone">Phone Number </label>
+                        <input type="text" id="phone" placeholder="Enter Your Phone Number">
+
+                         <label for="address"> Address </label>
+                        <textarea  id="address" placeholder="Enter Your Address "></textarea>
+                    
+
+                         <label for="city">City</label>
+                        <input type="text" id="city" placeholder="Enter city">
+
+                         <label for="pincode">Pin Code</label>
+                        <input type="text" id="pincode" placeholder="Enter Pin Code">
+                    </div>
+
+                    <div class="checkout-Summary">
+                        <h2> Order Summary</h2>
+
+                    <div class="checkout-product">
+                        <span>Snake Plant</span>
+                        <span>499</span>
+                    </div>
+
+                        <div class="checkout-row">
+                            <span>Subtotal</span>
+                            <span>499</span>
+                        </div>
+
+                    <div class="checkout-row">
+
+                        <span> Delivery</span>
+                        <span>0</span>
+                    </div>
+
+                <hr>
+                <div class="checkout-total">
+                    <strong>Total</strong>
+                    <strong>499</strong>
+                </div>
+
+                <h3>Payment Method</h3>
+
+                <label>
+                    <input type="radio" name="payment" value="cod">Cash on Delivery
+                </label>
+
+                <label> 
+                    <input type="radio" name="payment" value="online">Online Delivery
+                </label>
+
+                 <button type="button" class="place-order-btn">Place Order</button>
+                
+                    </div>
+                </div>
+            </section>
+
+
+
+        </main>
+
+        <script>
+            
+
+// ==========================================
+// GREENNEST - CHECKOUT
+// ==========================================
+
+// Get current logged-in user
+const currentUser =
+    JSON.parse(localStorage.getItem("currentUser"));
+
+
+// ==========================================
+// CHECK LOGIN
+// ==========================================
+
+if (!currentUser) {
+
+    alert("Please login first to continue.");
+
+    window.location.href = "login.html";
+
+}
+
+
+// ==========================================
+// GET CART
+// ==========================================
+
+function getCartKey() {
+
+    return "cart_" + currentUser.email;
+
+}
+
+
+function getCart() {
+
+    return JSON.parse(
+        localStorage.getItem(getCartKey())
+    ) || [];
+
+}
+
+
+// ==========================================
+// GET CUSTOMER FIELDS
+// ==========================================
+
+const nameInput =
+    document.getElementById("name");
+
+const emailInput =
+    document.getElementById("email");
+
+const phoneInput =
+    document.getElementById("phone");
+
+
+// ==========================================
+// AUTO-FILL USER DETAILS
+// ==========================================
+
+if (currentUser) {
+
+    nameInput.value = currentUser.name;
+    emailInput.value = currentUser.email;
+    phoneInput.value = currentUser.phone;
+
+}
+
+
+// ==========================================
+// DISPLAY CART SUMMARY
+// ==========================================
+
+function displayCheckoutSummary() {
+
+    const cart = getCart();
+
+    const summary =
+        document.querySelector(".checkout-Summary");
+
+
+    // Remove old product rows
+    const oldProducts =
+        summary.querySelectorAll(".checkout-product");
+
+    oldProducts.forEach(function (product) {
+        product.remove();
+    });
+
+
+    // Empty cart
+    if (cart.length === 0) {
+
+        alert("Your cart is empty.");
+
+        window.location.href = "cart.html";
+
+        return;
+
+    }
+
+
+    let subtotal = 0;
+
+    const totalElement =
+        document.querySelector(".checkout-total strong:last-child");
+
+    const subtotalElement =
+        document.querySelector(".checkout-row span:last-child");
+
+    
+    // Add every cart product
+    const paymentHeading =
+        summary.querySelector("h3");
+
+
+    cart.forEach(function (item) {
+
+        const productRow =
+            document.createElement("div");
+
+        productRow.className =
+            "checkout-product";
+
+        productRow.innerHTML = `
+            <span>
+                ${item.name} × ${item.quantity}
+            </span>
+
+            <span>
+                ₹${item.price * item.quantity}
+            </span>
+        `;
+
+        summary.insertBefore(
+            productRow,
+            summary.querySelector(".checkout-row")
+        );
+
+
+        subtotal +=
+            item.price * item.quantity;
+
+    });
+
+
+    const delivery = 0;
+
+    const total =
+        subtotal + delivery;
+
+
+    // Update subtotal
+    subtotalElement.textContent =
+        "₹" + subtotal;
+
+
+    // Update total
+    totalElement.textContent =
+        "₹" + total;
+
+}
+
+
+// ==========================================
+// PLACE ORDER BUTTON
+// ==========================================
+
+const placeOrderButton =
+    document.querySelector(".place-order-btn");
+
+placeOrderButton.addEventListener("click", function () {
+
+    const name =
+        document.getElementById("name").value.trim();
+
+    const email =
+        document.getElementById("email").value.trim();
+
+    const phone =
+        document.getElementById("phone").value.trim();
+
+    const address =
+        document.getElementById("address").value.trim();
+
+    const city =
+        document.getElementById("city").value.trim();
+
+    const pincode =
+        document.getElementById("pincode").value.trim();
+
+    const selectedPayment =
+        document.querySelector(
+            'input[name="payment"]:checked'
+        );
+
+    // Check delivery details
+    if (
+        name === "" ||
+        email === "" ||
+        phone === "" ||
+        address === "" ||
+        city === "" ||
+        pincode === ""
+    ) {
+        alert("Please fill all delivery details.");
+        return;
+    }
+
+    // Check payment method
+    if (!selectedPayment) {
+        alert("Please select a payment method.");
+        return;
+    }
+
+    // Get current user's cart
+    const cart = getCart();
+
+    if (cart.length === 0) {
+        alert("Your cart is empty.");
+        window.location.href = "cart.html";
+        return;
+    }
+
+    // Calculate subtotal
+    let subtotal = 0;
+
+    cart.forEach(function (item) {
+        subtotal += item.price * item.quantity;
+    });
+
+    const delivery = 0;
+    const total = subtotal + delivery;
+
+    // Create order
+    const order = {
+        id: "ORD" + Date.now(),
+
+        userEmail: currentUser.email,
+
+        customer: {
+            name: name,
+            email: email,
+            phone: phone,
+            address: address,
+            city: city,
+            pincode: pincode
+        },
+
+        items: cart,
+
+        subtotal: subtotal,
+        delivery: delivery,
+        total: total,
+
+        paymentMethod: selectedPayment.value,
+
+        status: "Order Placed",
+
+        date: new Date().toISOString()
+    };
+
+    // Get existing orders
+    const orders =
+        JSON.parse(localStorage.getItem("orders")) || [];
+
+    // Add new order
+    orders.push(order);
+
+    // Save orders
+    localStorage.setItem(
+        "orders",
+        JSON.stringify(orders)
+    );
+
+    // Clear current user's cart
+    localStorage.removeItem(
+        getCartKey()
+    );
+
+    alert(
+        "Order placed successfully! 🌿\nOrder ID: " +
+        order.id
+    );
+
+    // Go to orders page
+    window.location.href = "order.html";
+});
+
+</script>
+</body>
+</html>
